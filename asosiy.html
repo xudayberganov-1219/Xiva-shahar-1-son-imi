@@ -1,0 +1,2339 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xiva shahar 1-son ixtisoslashtirilgan maktab-internati</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            scroll-behavior: smooth;
+        }
+
+        .dark {
+            color: #e5e7eb;
+        }
+
+        .dark body {
+            background-color: #111827;
+            color: #e5e7eb;
+        }
+
+        /* Navigation Styles */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #e5e7eb;
+            transition: all 0.3s ease;
+        }
+
+        .dark .navbar {
+            background: rgba(17, 24, 39, 0.9);
+            border-bottom: 1px solid #374151;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 4rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo i {
+            font-size: 2rem;
+            color: #2563eb;
+        }
+
+        .dark .logo i {
+            color: #60a5fa;
+        }
+
+        .logo-text {
+            font-weight: bold;
+            font-size: 1.125rem;
+            background: linear-gradient(to right, #2563eb, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: #374151;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.375rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .dark .nav-link {
+            color: #d1d5db;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: #2563eb;
+        }
+
+        .dark .nav-link:hover, .dark .nav-link.active {
+            color: #60a5fa;
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #2563eb;
+            border-radius: 1px;
+        }
+
+        .dark .nav-link.active::after {
+            background: #60a5fa;
+        }
+
+        .theme-toggle, .mobile-menu-btn {
+            background: transparent;
+            border: 1px solid #d1d5db;
+            border-radius: 0.375rem;
+            padding: 0.5rem;
+            cursor: pointer;
+            color: #374151;
+            transition: all 0.3s ease;
+        }
+
+        .dark .theme-toggle, .dark .mobile-menu-btn {
+            border-color: #4b5563;
+            color: #d1d5db;
+        }
+
+        .theme-toggle:hover, .mobile-menu-btn:hover {
+            background: #f3f4f6;
+        }
+
+        .dark .theme-toggle:hover, .dark .mobile-menu-btn:hover {
+            background: #374151;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 0.5rem;
+            margin-left: 1rem;
+        }
+
+        .social-link {
+            padding: 0.5rem;
+            color: #6b7280;
+            text-decoration: none;
+            border-radius: 0.375rem;
+            transition: all 0.3s ease;
+        }
+
+        .dark .social-link {
+            color: #9ca3af;
+        }
+
+        .social-link:hover {
+            transform: scale(1.1);
+        }
+
+        .social-link.instagram:hover {
+            color: #e91e63;
+        }
+
+        .social-link.telegram:hover {
+            color: #2196f3;
+        }
+
+        .social-link.youtube:hover {
+            color: #f44336;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+        }
+
+        .mobile-menu {
+            display: none;
+            background: white;
+            border-top: 1px solid #e5e7eb;
+            padding: 1rem;
+        }
+
+        .dark .mobile-menu {
+            background: #111827;
+            border-top: 1px solid #374151;
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu a {
+            display: block;
+            padding: 0.75rem;
+            color: #374151;
+            text-decoration: none;
+            border-radius: 0.375rem;
+            margin-bottom: 0.25rem;
+            transition: all 0.3s ease;
+        }
+
+        .dark .mobile-menu a {
+            color: #d1d5db;
+        }
+
+        .mobile-menu a:hover {
+            background: #f3f4f6;
+            color: #2563eb;
+        }
+
+        .dark .mobile-menu a:hover {
+            background: #374151;
+            color: #60a5fa;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #eff6ff 0%, #ffffff 50%, #faf5ff 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dark .hero {
+            background: linear-gradient(135deg, #111827 0%, #1f2937 50%, #581c87 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 5rem;
+            left: 5rem;
+            width: 18rem;
+            height: 18rem;
+            background: #dbeafe;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.7;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .dark .hero::before {
+            background: #1e40af;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 10rem;
+            right: 5rem;
+            width: 18rem;
+            height: 18rem;
+            background: #e9d5ff;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.7;
+            animation: float 6s ease-in-out infinite 2s;
+        }
+
+        .dark .hero::after {
+            background: #7c3aed;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(-2.5rem); }
+            50% { transform: translateY(2.5rem); }
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-text {
+            text-align: left;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            background: linear-gradient(to right, #2563eb, #7c3aed);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: bold;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title .gradient-text {
+            background: linear-gradient(to right, #2563eb, #7c3aed, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-title .orange-gradient {
+            background: linear-gradient(to right, #f97316, #ef4444);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-description {
+            font-size: 1.25rem;
+            color: #6b7280;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .dark .hero-description {
+            color: #d1d5db;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(to right, #2563eb, #7c3aed);
+            color: white;
+            box-shadow: 0 4px 14px 0 rgba(37, 99, 235, 0.25);
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 8px 25px 0 rgba(37, 99, 235, 0.35);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #2563eb;
+            border: 2px solid #2563eb;
+        }
+
+        .btn-outline:hover {
+            background: #2563eb;
+            color: white;
+        }
+
+        .dark .btn-outline {
+            color: #60a5fa;
+            border-color: #60a5fa;
+        }
+
+        .dark .btn-outline:hover {
+            background: #60a5fa;
+            color: #111827;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #eff6ff, #dbeafe);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .dark .stat-card {
+            background: linear-gradient(135deg, #1e3a8a, #1e40af);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.15);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #2563eb;
+            margin-bottom: 0.5rem;
+            animation: countUp 2s ease-out;
+        }
+
+        .dark .stat-number {
+            color: #60a5fa;
+        }
+
+        @keyframes countUp {
+            from { opacity: 0; transform: scale(0.5); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        .dark .stat-label {
+            color: #d1d5db;
+        }
+
+        .stat-card.full-width {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, #fff7ed, #fed7aa);
+        }
+
+        .dark .stat-card.full-width {
+            background: linear-gradient(135deg, #c2410c, #ea580c);
+        }
+
+        .stat-card.full-width .stat-number {
+            color: #ea580c;
+        }
+
+        .dark .stat-card.full-width .stat-number {
+            color: #fb923c;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-light {
+            background: white;
+        }
+
+        .dark .section-light {
+            background: #111827;
+        }
+
+        .section-gray {
+            background: linear-gradient(135deg, #f9fafb, #eff6ff);
+        }
+
+        .dark .section-gray {
+            background: linear-gradient(135deg, #1f2937, #111827);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            background: linear-gradient(to right, #16a34a, #2563eb);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #111827, #6b7280);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .dark .section-title {
+            background: linear-gradient(to right, #ffffff, #d1d5db);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-description {
+            font-size: 1.25rem;
+            color: #6b7280;
+            max-width: 48rem;
+            margin: 0 auto;
+        }
+
+        .dark .section-description {
+            color: #9ca3af;
+        }
+
+        /* Grid Layouts */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        /* Card Styles */
+        .card {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .dark .card {
+            background: #1f2937;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-gradient-blue {
+            background: linear-gradient(135deg, #eff6ff, #dbeafe);
+        }
+
+        .dark .card-gradient-blue {
+            background: linear-gradient(135deg, #1e3a8a, #1e40af);
+        }
+
+        .card-gradient-purple {
+            background: linear-gradient(135deg, #faf5ff, #e9d5ff);
+        }
+
+        .dark .card-gradient-purple {
+            background: linear-gradient(135deg, #581c87, #7c3aed);
+        }
+
+        .card-gradient-orange {
+            background: linear-gradient(135deg, #fff7ed, #fed7aa);
+        }
+
+        .dark .card-gradient-orange {
+            background: linear-gradient(135deg, #c2410c, #ea580c);
+        }
+
+        /* Table Styles */
+        .table-container {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin-top: 2rem;
+        }
+
+        .dark .table-container {
+            background: #1f2937;
+        }
+
+        .table-header {
+            background: linear-gradient(to right, #2563eb, #7c3aed);
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .table-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .table {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        .table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .table th {
+            background: #f9fafb;
+            padding: 1rem;
+            text-align: left;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .dark .table th {
+            background: #374151;
+            color: #d1d5db;
+        }
+
+        .table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e5e7eb;
+            color: #374151;
+        }
+
+        .dark .table td {
+            border-bottom: 1px solid #374151;
+            color: #d1d5db;
+        }
+
+        .table tbody tr:hover {
+            background: #f9fafb;
+        }
+
+        .dark .table tbody tr:hover {
+            background: #374151;
+        }
+
+        /* Badge Styles */
+        .badge-international {
+            background: #3b82f6;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .badge-national {
+            background: #10b981;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        /* Achievement Cards */
+        .achievement-card {
+            position: relative;
+            text-align: center;
+            padding: 2rem 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .achievement-card:hover {
+            transform: scale(1.05) rotateY(5deg);
+            box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.2);
+        }
+
+        .achievement-badge {
+            position: absolute;
+            top: -1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.15);
+        }
+
+        .achievement-badge.gold {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+        }
+
+        .achievement-badge.silver {
+            background: linear-gradient(135deg, #9ca3af, #6b7280);
+        }
+
+        .achievement-badge.bronze {
+            background: linear-gradient(135deg, #fb923c, #ea580c);
+        }
+
+        .achievement-avatar {
+            width: 5rem;
+            height: 5rem;
+            margin: 2rem auto 1rem;
+            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: #2563eb;
+        }
+
+        .dark .achievement-avatar {
+            background: linear-gradient(135deg, #1e40af, #1e3a8a);
+            color: #60a5fa;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            background: linear-gradient(135deg, #eff6ff, #faf5ff);
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .dark .contact-form {
+            background: linear-gradient(135deg, #1e3a8a, #581c87);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #374151;
+            margin-bottom: 0.5rem;
+        }
+
+        .dark .form-label {
+            color: #d1d5db;
+        }
+
+        .form-input, .form-textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.5rem;
+            background: white;
+            color: #374151;
+            transition: all 0.3s ease;
+        }
+
+        .dark .form-input, .dark .form-textarea {
+            background: #1f2937;
+            border-color: #4b5563;
+            color: #e5e7eb;
+        }
+
+        .form-input:focus, .form-textarea:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #111827, #1e3a8a);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            margin-bottom: 2rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo i {
+            font-size: 3rem;
+            color: #60a5fa;
+        }
+
+        .footer-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(to right, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .footer-description {
+            color: #d1d5db;
+            font-size: 1.125rem;
+            max-width: 32rem;
+            margin: 0 auto 2rem;
+        }
+
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-social a {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a.instagram {
+            background: linear-gradient(135deg, #e91e63, #7c3aed);
+        }
+
+        .footer-social a.telegram {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+        }
+
+        .footer-social a.youtube {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+        }
+
+        .footer-social a:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px -3px rgba(0, 0, 0, 0.3);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #374151;
+            padding-top: 2rem;
+            color: #9ca3af;
+        }
+
+        .footer-credit {
+            color: #6b7280;
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Contact Info */
+        .contact-info {
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem;
+            background: #f9fafb;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .dark .contact-item {
+            background: #1f2937;
+        }
+
+        .contact-item:hover {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-icon {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .contact-icon.red {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+
+        .dark .contact-icon.red {
+            background: #7f1d1d;
+            color: #fca5a5;
+        }
+
+        .contact-icon.green {
+            background: #dcfce7;
+            color: #16a34a;
+        }
+
+        .dark .contact-icon.green {
+            background: #14532d;
+            color: #4ade80;
+        }
+
+        .contact-icon.blue {
+            background: #dbeafe;
+            color: #2563eb;
+        }
+
+        .dark .contact-icon.blue {
+            background: #1e3a8a;
+            color: #60a5fa;
+        }
+
+        .contact-icon.purple {
+            background: #e9d5ff;
+            color: #7c3aed;
+        }
+
+        .dark .contact-icon.purple {
+            background: #581c87;
+            color: #a78bfa;
+        }
+
+        .contact-details h5 {
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 0.25rem;
+        }
+
+        .dark .contact-details h5 {
+            color: #ffffff;
+        }
+
+        .contact-details p {
+            color: #6b7280;
+        }
+
+        .dark .contact-details p {
+            color: #d1d5db;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+
+            .grid-3 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .grid-4 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .grid-3, .grid-4 {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero-buttons .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .table {
+                font-size: 0.875rem;
+            }
+
+            .table th, .table td {
+                padding: 0.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-container {
+                padding: 0 0.5rem;
+            }
+
+            .logo-text {
+                font-size: 1rem;
+            }
+
+            .hero-title {
+                font-size: 1.75rem;
+            }
+
+            .section-title {
+                font-size: 1.75rem;
+            }
+
+            .hero-description {
+                font-size: 1rem;
+            }
+
+            .card {
+                padding: 1rem;
+            }
+
+            .achievement-card {
+                padding: 1.5rem 1rem;
+            }
+        }
+
+        /* Animation Classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s ease;
+        }
+
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s ease;
+        }
+
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.6s ease;
+        }
+
+        .scale-in.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Utility Classes */
+        .text-center { text-align: center; }
+        .text-left { text-align: left; }
+        .text-right { text-align: right; }
+        .font-bold { font-weight: bold; }
+        .font-semibold { font-weight: 600; }
+        .font-medium { font-weight: 500; }
+        .mb-1 { margin-bottom: 0.25rem; }
+        .mb-2 { margin-bottom: 0.5rem; }
+        .mb-3 { margin-bottom: 0.75rem; }
+        .mb-4 { margin-bottom: 1rem; }
+        .mb-6 { margin-bottom: 1.5rem; }
+        .mb-8 { margin-bottom: 2rem; }
+        .mt-4 { margin-top: 1rem; }
+        .mt-6 { margin-top: 1.5rem; }
+        .mt-8 { margin-top: 2rem; }
+        .p-4 { padding: 1rem; }
+        .p-6 { padding: 1.5rem; }
+        .px-4 { padding-left: 1rem; padding-right: 1rem; }
+        .py-4 { padding-top: 1rem; padding-bottom: 1rem; }
+        .hidden { display: none; }
+        .block { display: block; }
+        .flex { display: flex; }
+        .inline-flex { display: inline-flex; }
+        .justify-center { justify-content: center; }
+        .items-center { align-items: center; }
+        .gap-2 { gap: 0.5rem; }
+        .gap-4 { gap: 1rem; }
+        .w-full { width: 100%; }
+        .max-w-lg { max-width: 32rem; }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo" onclick="scrollToSection('home')">
+                <i class="fas fa-graduation-cap"></i>
+                <span class="logo-text">Xiva 1-son Maktab-Internati</span>
+            </div>
+
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link active" onclick="scrollToSection('home')">Bosh sahifa</a></li>
+                <li><a href="#about" class="nav-link" onclick="scrollToSection('about')">Maktab haqida</a></li>
+                <li><a href="#achievements" class="nav-link" onclick="scrollToSection('achievements')">Yutuqlar</a></li>
+                <li><a href="#teachers" class="nav-link" onclick="scrollToSection('teachers')">O'qituvchilar</a></li>
+                <li><a href="#news" class="nav-link" onclick="scrollToSection('news')">Yangiliklar</a></li>
+                <li><a href="#contact" class="nav-link" onclick="scrollToSection('contact')">Aloqa</a></li>
+            </ul>
+
+            <div style="display: flex; align-items: center;">
+                <button class="theme-toggle" onclick="toggleTheme()">
+                    <i class="fas fa-moon" id="theme-icon"></i>
+                </button>
+
+                <div class="social-links">
+                    <a href="https://www.instagram.com/khiva.imi" target="_blank" class="social-link instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://t.me/khiva1son_imi" target="_blank" class="social-link telegram">
+                        <i class="fab fa-telegram"></i>
+                    </a>
+                    <a href="https://www.youtube.com/channel/UCaOLW3EsO6zpH0LXSv_QhEg" target="_blank" class="social-link youtube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars" id="mobile-menu-icon"></i>
+            </button>
+        </div>
+
+        <div class="mobile-menu" id="mobile-menu">
+            <a href="#home" onclick="scrollToSection('home')">Bosh sahifa</a>
+            <a href="#about" onclick="scrollToSection('about')">Maktab haqida</a>
+            <a href="#achievements" onclick="scrollToSection('achievements')">Yutuqlar</a>
+            <a href="#teachers" onclick="scrollToSection('teachers')">O'qituvchilar</a>
+            <a href="#news" onclick="scrollToSection('news')">Yangiliklar</a>
+            <a href="#contact" onclick="scrollToSection('contact')">Aloqa</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="badge">
+                        <i class="fas fa-sparkles"></i>
+                        Zamonaviy Ta'lim Muassasasi
+                    </div>
+                    <h1 class="hero-title">
+                        <span class="gradient-text">Xiva shahar</span><br>
+                        <span>1-son ixtisoslashtirilgan</span><br>
+                        <span class="orange-gradient">maktab-internati</span>
+                    </h1>
+                    <p class="hero-description">
+                        Zamonaviy ta'lim, ilg'or texnologiyalar va yuqori sifatli bilim berish orqali kelajak avlodini tayyorlash - bizning asosiy maqsadimiz.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#about" class="btn btn-primary" onclick="scrollToSection('about')">
+                            <i class="fas fa-book-open"></i>
+                            Batafsil
+                        </a>
+                        <a href="#achievements" class="btn btn-outline" onclick="scrollToSection('achievements')">
+                            <i class="fas fa-trophy"></i>
+                            Yutuqlar
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hero-stats">
+                    <div class="stat-card">
+                        <div class="stat-number">244</div>
+                        <div class="stat-label">O'quvchilar</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">35</div>
+                        <div class="stat-label">O'qituvchilar</div>
+                    </div>
+                    <div class="stat-card full-width">
+                        <div class="stat-number">17</div>
+                        <div class="stat-label">Xalqaro va Milliy sertifikatga ega o'quvchilar soni</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section section-light">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-badge">
+                    <i class="fas fa-school"></i>
+                    Maktab Haqida
+                </div>
+                <h2 class="section-title">Zamonaviy ta'lim muassasasi</h2>
+                <p class="section-description">
+                    Bizning maqsadimiz - har bir o'quvchining salohiyatini ochish va kelajakka tayyorlash
+                </p>
+            </div>
+
+            <div class="grid-2">
+                <div class="slide-in-left">
+                    <h3 style="font-size: 2rem; font-weight: bold; margin-bottom: 1.5rem; color: #111827;">Bizning missiyamiz</h3>
+                    <p style="font-size: 1.125rem; color: #6b7280; margin-bottom: 2rem; line-height: 1.6;">
+                        Xiva shahar 1-son ixtisoslashtirilgan maktab-internati O'zbekiston Respublikasining ta'lim tizimida alohida o'rin tutadi. Maktabimiz yuqori malakali o'qituvchilar jamoasi va zamonaviy ta'lim texnologiyalari yordamida o'quvchilarga sifatli ta'lim beradi.
+                    </p>
+
+                    <div style="margin-bottom: 1rem;">
+                        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+                            <i class="fas fa-check-circle" style="color: #10b981; font-size: 1.5rem;"></i>
+                            <span style="color: #374151; font-weight: 500;">Zamonaviy ta'lim dasturlari</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+                            <i class="fas fa-check-circle" style="color: #10b981; font-size: 1.5rem;"></i>
+                            <span style="color: #374151; font-weight: 500;">Xalqaro standartdagi laboratoriyalar</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+                            <i class="fas fa-check-circle" style="color: #10b981; font-size: 1.5rem;"></i>
+                            <span style="color: #374151; font-weight: 500;">Yuqori malakali o'qituvchilar jamoasi</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.75rem;">
+                            <i class="fas fa-check-circle" style="color: #10b981; font-size: 1.5rem;"></i>
+                            <span style="color: #374151; font-weight: 500;">Olimpiada va tanlovlarga tayyorgarlik</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slide-in-right">
+                    <div style="position: relative; border-radius: 1rem; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);">
+                        <img src="./BG.jpg" alt="Maktab binosi" style="width: 100%; height: 24rem; object-fit: cover;">
+                        <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent);"></div>
+                        <div style="position: absolute; bottom: 1.5rem; left: 1.5rem; color: white;">
+                            <h4 style="font-size: 1.25rem; font-weight: bold; margin-bottom: 0.5rem;">Maktab binosi</h4>
+                            <p style="font-size: 0.875rem; opacity: 0.9;">Zamonaviy arxitektura va jihozlar</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="section section-gray">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-badge" style="background: linear-gradient(to right, #f59e0b, #ea580c);">
+                    <i class="fas fa-trophy"></i>
+                    Yutuqlar
+                </div>
+                <h2 class="section-title">O'quvchilar yutuqlari</h2>
+                <p class="section-description">
+                    Bizning o'quvchilarimizning erishgan muvaffaqiyatlari
+                </p>
+            </div>
+
+            <!-- Olympic Winners -->
+            <div class="fade-in" style="margin-bottom: 4rem;">
+                <h3 class="text-center" style="font-size: 2rem; font-weight: bold; margin-bottom: 3rem; color: #111827;">Olimpiada g'oliblari</h3>
+
+                <div class="grid-3">
+                    <div class="achievement-card card-gradient-orange">
+                        <div class="achievement-badge gold">
+                            <i class="fas fa-medal" style="color: white; font-size: 1.5rem;"></i>
+                        </div>
+                        <div class="achievement-avatar">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <div class="badge-international" style="background: #f59e0b; margin-bottom: 0.75rem;">1-o'rin</div>
+                        <h4 style="font-size: 1.25rem; font-weight: bold; margin-bottom: 0.5rem; color: #111827;">Matyoqubov Bexruz</h4>
+                        <p style="color: #6b7280; margin-bottom: 0.5rem;">Viloyat bosqichi, STEAM</p>
+                        <p style="font-size: 0.875rem; color: #6b7280;">2025-yil</p>
+                    </div>
+
+                    <div class="achievement-card card-gradient-blue">
+                        <div class="achievement-badge silver">
+                            <i class="fas fa-medal" style="color: white; font-size: 1.5rem;"></i>
+                        </div>
+                        <div class="achievement-avatar">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <div class="badge-international" style="background: #6b7280; margin-bottom: 0.75rem;">2-o'rin</div>
+                        <h4 style="font-size: 1.25rem; font-weight: bold; margin-bottom: 0.5rem; color: #111827;">Davronbekov Saifalixon</h4>
+                        <p style="color: #6b7280; margin-bottom: 0.5rem;">Viloyat bosqichi, STEAM</p>
+                        <p style="font-size: 0.875rem; color: #6b7280;">2025-yil</p>
+                    </div>
+
+                    <div class="achievement-card card-gradient-orange">
+                        <div class="achievement-badge bronze">
+                            <i class="fas fa-medal" style="color: white; font-size: 1.5rem;"></i>
+                        </div>
+                        <div class="achievement-avatar">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <div class="badge-international" style="background: #ea580c; margin-bottom: 0.75rem;">3-o'rin</div>
+                        <h4 style="font-size: 1.25rem; font-weight: bold; margin-bottom: 0.5rem; color: #111827;">Ilhombekov Xasanboy</h4>
+                        <p style="color: #6b7280; margin-bottom: 0.5rem;">Viloyat bosqichi</p>
+                        <p style="font-size: 0.875rem; color: #6b7280;">2025-yil</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Website Creator -->
+            <div class="fade-in" style="margin-bottom: 4rem;">
+                <h3 class="text-center" style="font-size: 2rem; font-weight: bold; margin-bottom: 3rem; color: #111827;">Sayt yaratuvchisi</h3>
+
+                <div style="max-width: 32rem; margin: 0 auto;">
+                    <div class="card card-gradient-purple" style="text-align: center; padding: 2rem; position: relative;">
+                        <div style="position: absolute; top: -1.5rem; left: 50%; transform: translateX(-50%); width: 4rem; height: 4rem; background: linear-gradient(135deg, #7c3aed, #ec4899); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.15);">
+                            <i class="fas fa-crown" style="color: white; font-size: 2rem;"></i>
+                        </div>
+
+                        <div style="margin-top: 2rem; margin-bottom: 1.5rem;">
+                            <div style="width: 6rem; height: 6rem; margin: 0 auto; background: linear-gradient(135deg, #e9d5ff, #fdf2f8); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; position: relative;">
+                                <i class="fas fa-user-graduate" style="font-size: 3rem; color: #7c3aed;"></i>
+                                <div style="position: absolute; top: -0.5rem; right: -0.5rem; width: 2rem; height: 2rem; background: linear-gradient(135deg, #fbbf24, #f97316); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                    <i class="fas fa-crown" style="color: white; font-size: 1rem;"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="badge-international" style="background: linear-gradient(to right, #7c3aed, #ec4899); margin-bottom: 1rem;">Middle Developer</div>
+                        <h4 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 0.75rem; color: #111827;">Ilyos Xudayberganov</h4>
+                        <p style="color: #6b7280; margin-bottom: 1.5rem;">Ko'p yillik tajribaga ega bo'lgan yosh dasturchi</p>
+
+                        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem;">
+                            <span style="padding: 0.25rem 0.75rem; background: white; color: #7c3aed; border-radius: 9999px; font-size: 0.875rem; font-weight: 500; box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);">Python</span>
+                            <span style="padding: 0.25rem 0.75rem; background: white; color: #7c3aed; border-radius: 9999px; font-size: 0.875rem; font-weight: 500; box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);">C++</span>
+                            <span style="padding: 0.25rem 0.75rem; background: white; color: #7c3aed; border-radius: 9999px; font-size: 0.875rem; font-weight: 500; box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);">Robotika</span>
+                            <span style="padding: 0.25rem 0.75rem; background: white; color: #7c3aed; border-radius: 9999px; font-size: 0.875rem; font-weight: 500; box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);">AI</span>
+                            <span style="padding: 0.25rem 0.75rem; background: white; color: #7c3aed; border-radius: 9999px; font-size: 0.875rem; font-weight: 500; box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);">HTML</span>
+                            <span style="padding: 0.25rem 0.75rem; background: white; color: #7c3aed; border-radius: 9999px; font-size: 0.875rem; font-weight: 500; box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);">CSS</span>
+                            <span style="padding: 0.25rem 0.75rem; background: white; color: #7c3aed; border-radius: 9999px; font-size: 0.875rem; font-weight: 500; box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);">JS</span>
+                            <span style="padding: 0.25rem 0.75rem; background: white; color: #7c3aed; border-radius: 9999px; font-size: 0.875rem; font-weight: 500; box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);">Canva</span>
+                            <span style="padding: 0.25rem 0.75rem; background: white; color: #7c3aed; border-radius: 9999px; font-size: 0.875rem; font-weight: 500; box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);">App Inventor</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certificates Table -->
+<div class="fade-in">
+    <h3 class="text-center" style="font-size: 2rem; font-weight: bold; margin-bottom: 3rem; color: #111827;">Xalqaro va milliy sertifikatlar</h3>
+
+    <div class="table-container">
+        <div class="table-header">
+            <h4 class="table-title">Xiva shahar 1-son ixtisoslashtirilgan maktab internatining 2024/2025 o'quv yilidagi sertifikatlarga ega o'quvchilar</h4>
+        </div>
+
+        <div class="table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>O'quvchi F.I.Sh</th>
+                        <th>Sertifikat turi</th>
+                        <th>Mazmuni (Fan)</th>
+                        <th>Daraja</th>
+                        <th>To'plagan bali</th>
+                        <th>Amal qilish muddati</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="font-weight: 600;">Maratova Shahrizoda Dilmurod qizi</td>
+                        <td><span class="badge-national">Milliy</span></td>
+                        <td>Ingliz tili</td>
+                        <td>B2</td>
+                        <td>56</td>
+                        <td>19.03.2025 / 18.03.2027</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: 600;">Botirova Dilobar Zafarjon qizi</td>
+                        <td><span class="badge-national">Milliy</span></td>
+                        <td>Ingliz tili</td>
+                        <td>B2</td>
+                        <td>63</td>
+                        <td>20.06.2024 / 19.06.2026</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: 600;">Tohirova Nozigul Sardor qizi</td>
+                        <td><span class="badge-national">Milliy</span></td>
+                        <td>Ingliz tili</td>
+                        <td>B2</td>
+                        <td>52</td>
+                        <td>15.05.2024 / 14.05.2026</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: 600;">Ro'zmatova Nigina G'ayrat qizi</td>
+                        <td><span class="badge-national">Milliy</span></td>
+                        <td>Ingliz tili</td>
+                        <td>B2</td>
+                        <td>63</td>
+                        <td>24.01.2025 / 23.01.2027</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: 600;">Nazarov Abbosbek Mansur o'g'li</td>
+                        <td><span class="badge-international">Xalqaro</span></td>
+                        <td>Ingliz tili (IELTS)</td>
+                        <td>B2</td>
+                        <td>5.5</td>
+                        <td>27.03.2025 / 26.03.2027</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: 600;">Baxodirova Sevara Qaxramon qizi</td>
+                        <td><span class="badge-national">Milliy</span></td>
+                        <td>Matematika (o'zbek)</td>
+                        <td>C</td>
+                        <td>48,87 (75,18%)</td>
+                        <td>25.12.2024 / 24.12.2027</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: 600;">Jabbarganov Boburbek Bekzod o'g'li</td>
+                        <td><span class="badge-national">Milliy</span></td>
+                        <td>Ingliz tili</td>
+                        <td>B2</td>
+                        <td>58</td>
+                        <td>15.05.2024 / 14.05.2026</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: 600;">Jabbarganov Boburbek Bekzod o'g'li</td>
+                        <td><span class="badge-international">Xalqaro</span></td>
+                        <td>Matematika (SAT)</td>
+                        <td>-</td>
+                        <td>1060 (Reading and Writing: 390, Math: 670)</td>
+                        <td>08.03.2025 / 07.03.2028</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: 600;">Jumaniyozov Shohjahon Murodbek o'g'li</td>
+                        <td><span class="badge-international">Xalqaro</span></td>
+                        <td>Ingliz tili (IELTS)</td>
+                        <td>B2</td>
+                        <td>6</td>
+                        <td>07.11.2024 / 06.11.2026</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: 600;">Odilbekova Bozorgul Odilbek qizi</td>
+                        <td><span class="badge-national">Milliy</span></td>
+                        <td>Matematika (o'zbek)</td>
+                        <td>C</td>
+                        <td>46,17 (71,03%)</td>
+                        <td>25.12.2024 / 24.12.2027</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: 600;">Rustamboyev Behruzbek Oybek o'g'li</td>
+                        <td><span class="badge-international">Xalqaro</span></td>
+                        <td>Ingliz tili (IELTS)</td>
+                        <td>B2</td>
+                        <td>5.5</td>
+                        <td>05.09.2024 / 04.09.2026</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: 600;">Sapayeva Sharifajon Xusinbay qizi</td>
+                        <td><span class="badge-national">Milliy</span></td>
+                        <td>Matematika (o'zbek)</td>
+                        <td>B</td>
+                        <td>55,78 (85,82%)</td>
+                        <td>25.12.2024 / 24.12.2027</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: 600;">Sapayeva Sharifajon Xusinbay qizi</td>
+                        <td><span class="badge-national">Milliy</span></td>
+                        <td>Fizika (o'zbek)</td>
+                        <td>B</td>
+                        <td>57,11 (87,86%)</td>
+                        <td>20.03.2025 / 19.03.2028</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: 600;">Xabibullayeva Farangiz Sharofbekovna</td>
+                        <td><span class="badge-national">Milliy</span></td>
+                        <td>Ona tili va adabiyot</td>
+                        <td>B</td>
+                        <td>57,86 (89,02%)</td>
+                        <td>22.01.2025 / 21.01.2028</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: 600;">Xabibullayeva Farangiz Sharofbekovna</td>
+                        <td><span class="badge-international">Xalqaro</span></td>
+                        <td>Ingliz tili</td>
+                        <td>B2</td>
+                        <td>55</td>
+                        <td>11.03.2024 / 10.03.2026</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: 600;">Zarifboyeva Zumradoy Sherzod qizi</td>
+                        <td><span class="badge-international">Xalqaro</span></td>
+                        <td>Ingliz tili</td>
+                        <td>B2</td>
+                        <td>60</td>
+                        <td>24.01.2025 / 23.01.2027</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: 600;">Kalandarova Tabassum G'ayrat qizi</td>
+                        <td><span class="badge-national">Milliy</span></td>
+                        <td>Matematika (o'zbek)</td>
+                        <td>B</td>
+                        <td>57,6 (88,62%)</td>
+                        <td>20.03.2025 / 19.03.2028</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: 600;">Sultonova Manzura Bahodir qizi</td>
+                        <td><span class="badge-national">Milliy</span></td>
+                        <td>Matematika (o'zbek)</td>
+                        <td>B+</td>
+                        <td>64,2 (98,77%)</td>
+                        <td>20.03.2025 / 19.03.2028</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: 600;">Yusupova Risolat Rizomat qizi</td>
+                        <td><span class="badge-national">Milliy</span></td>
+                        <td>Matematika (o'zbek)</td>
+                        <td>C</td>
+                        <td>49,35 (75,92%)</td>
+                        <td>20.03.2025 / 19.03.2028</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+    <!-- Teachers Section -->
+    <section id="teachers" class="section section-light">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-badge" style="background: linear-gradient(to right, #6366f1, #7c3aed);">
+                    <i class="fas fa-users"></i>
+                    O'qituvchilar
+                </div>
+                <h2 class="section-title">O'qituvchilar jamoasi</h2>
+                <p class="section-description">
+                    Malakali va tajribali pedagoglar
+                </p>
+            </div>
+
+            <!-- Featured Teachers -->
+            <div class="grid-3 fade-in" style="margin-bottom: 4rem;">
+                <div class="card card-gradient-blue" style="text-align: center;">
+                    <div style="width: 5rem; height: 5rem; margin: 0 auto; background: linear-gradient(135deg, #3b82f6, #6366f1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
+                        <i class="fas fa-users" style="font-size: 2.5rem; color: white;"></i>
+                    </div>
+                    <h4 style="font-size: 1.25rem; font-weight: bold; margin-bottom: 0.5rem; color: #111827;">Saidov Norimboy</h4>
+                    <p style="color: #6b7280; margin-bottom: 1rem;">Informatika va axborot texnologiyalari</p>
+                    <div class="badge-international" style="margin-bottom: 0.5rem;">Xalqaro</div>
+                    <p style="font-size: 0.875rem; color: #6b7280;">Google for education - Level 1-2</p>
+                </div>
+
+                <div class="card card-gradient-blue" style="text-align: center;">
+                    <div style="width: 5rem; height: 5rem; margin: 0 auto; background: linear-gradient(135deg, #3b82f6, #6366f1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
+                        <i class="fas fa-users" style="font-size: 2.5rem; color: white;"></i>
+                    </div>
+                    <h4 style="font-size: 1.25rem; font-weight: bold; margin-bottom: 0.5rem; color: #111827;">Babajanov Inoyatbek</h4>
+                    <p style="color: #6b7280; margin-bottom: 1rem;">Robotexnika</p>
+                    <div class="badge-international" style="margin-bottom: 0.5rem;">Xalqaro</div>
+                    <p style="font-size: 0.875rem; color: #6b7280;">Google for education - Level 1-2</p>
+                </div>
+
+                <div class="card card-gradient-blue" style="text-align: center;">
+                    <div style="width: 5rem; height: 5rem; margin: 0 auto; background: linear-gradient(135deg, #3b82f6, #6366f1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
+                        <i class="fas fa-users" style="font-size: 2.5rem; color: white;"></i>
+                    </div>
+                    <h4 style="font-size: 1.25rem; font-weight: bold; margin-bottom: 0.5rem; color: #111827;">Atajanov Sanjar</h4>
+                    <p style="color: #6b7280; margin-bottom: 1rem;">Matematika</p>
+                    <div class="badge-international" style="margin-bottom: 0.5rem;">Xalqaro</div>
+                    <p style="font-size: 0.875rem; color: #6b7280;">SAT - 1050</p>
+                </div>
+            </div>
+
+            <!-- Teachers Certificates Table -->
+<div class="fade-in">
+    <div class="table-container">
+        <div class="table-header">
+            <h4 class="table-title">Xiva Shahar 1-son Maktab-internat o'qituvchilari sertifikatlari</h4>
+        </div>
+
+        <div class="table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Ism Familiya</th>
+                        <th>Sertifikat turi</th>
+                        <th>Sertifikat nomi</th>
+                        <th>Darajasi</th>
+                        <th>Amal qilish muddati</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="font-weight: 600;">Atajanov Sanjarbek Erkin o'g'li</td>
+                        <td><span class="badge-international">Xalqaro</span></td>
+                        <td>SAT</td>
+                        <td>1050 (250/800)</td>
+                        <td>05.10.2024 - 04.10.2027</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: 600;">Abdullayeva Qamarjon Sobir qizi</td>
+                        <td><span class="badge-national">Milliy</span></td>
+                        <td>Matematika</td>
+                        <td>62.58 (B+)</td>
+                        <td>25.10.2024 - 24.10.2027</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: 600;">Sabirov Ixtiyorbek Baxtiyor o'g'li</td>
+                        <td><span class="badge-international">Xalqaro</span></td>
+                        <td>SAT</td>
+                        <td>1040 (310/730)</td>
+                        <td>07.12.2024 - 06.12.2027</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: 600;">Sabirov Ixtiyorbek Baxtiyor o'g'li</td>
+                        <td><span class="badge-national">Milliy</span></td>
+                        <td>Matematika</td>
+                        <td>66.35 (A)</td>
+                        <td>25.12.2024 - 24.12.2027</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: 600;">Xudarganov Jalilbek Shavkatovich</td>
+                        <td><span class="badge-international">Xalqaro</span></td>
+                        <td>GRE</td>
+                        <td>160</td>
+                        <td>09.03.2024 - 08.03.2027</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: 600;">Bekchanov Orifjon Iskandarovich</td>
+                        <td><span class="badge-international">Xalqaro</span></td>
+                        <td>SAT</td>
+                        <td>960 (260/700)</td>
+                        <td>01.06.2024 - 31.05.2027</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: 600;">Davletova Shoxida Shakirovna</td>
+                        <td><span class="badge-international">Xalqaro</span></td>
+                        <td>Google for education</td>
+                        <td>Level-1</td>
+                        <td>09.03.2023 - 08.03.2026</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: 600;">Davletova Shoxida Shakirovna</td>
+                        <td><span class="badge-international">Xalqaro</span></td>
+                        <td>Google for education</td>
+                        <td>Level-2</td>
+                        <td>09.03.2023 - 08.03.2026</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: 600;">Saidov Norimboy Baxtiyorovich</td>
+                        <td><span class="badge-international">Xalqaro</span></td>
+                        <td>Google for education</td>
+                        <td>Level-1</td>
+                        <td>19.12.2022 - 18.12.2025</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: 600;">Saidov Norimboy Baxtiyorovich</td>
+                        <td><span class="badge-international">Xalqaro</span></td>
+                        <td>Google for education</td>
+                        <td>Level-2</td>
+                        <td>25.12.2022 - 24.12.2025</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: 600;">Babajanov Inoyat Maqsudbek o'g'li</td>
+                        <td><span class="badge-international">Xalqaro</span></td>
+                        <td>Google for education</td>
+                        <td>Level-1</td>
+                        <td>02.02.2023 - 01.02.2026</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: 600;">Babajanov Inoyat Maqsudbek o'g'li</td>
+                        <td><span class="badge-international">Xalqaro</span></td>
+                        <td>Google for education</td>
+                        <td>Level-2</td>
+                        <td>04.02.2023 - 03.02.2026</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: 600;">Matyakubov Sarvarbek Ismailovich</td>
+                        <td><span class="badge-national">Milliy</span></td>
+                        <td>Fizika</td>
+                        <td>90.7</td>
+                        <td>17.04.2023 - 16.04.2026</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: 600;">Xusainova Feruza Yuldashovna</td>
+                        <td><span class="badge-national">Milliy</span></td>
+                        <td>Geografiya</td>
+                        <td>84.8</td>
+                        <td>14.02.2024 - 13.02.2027</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: 600;">Karimova Gulnoza Sultanovna</td>
+                        <td><span class="badge-national">Milliy</span></td>
+                        <td>CEEFR</td>
+                        <td>C1</td>
+                        <td>26.08.2024 - 19.06.2026</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: 600;">Madrimova Fazilat Ikram qizi</td>
+                        <td><span class="badge-international">Xalqaro</span></td>
+                        <td>TKT</td>
+                        <td>C1</td>
+                        <td>15.08.2024 - 28.06.2027</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: 600;">Kamiljanova Shaxrizoda Davronbekovna</td>
+                        <td><span class="badge-national">Milliy</span></td>
+                        <td>CEEFR</td>
+                        <td>C1</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: 600;">Masharipova Shahlo Allabergan qizi</td>
+                        <td><span class="badge-international">Xalqaro</span></td>
+                        <td>IELTS</td>
+                        <td>B2</td>
+                        <td>18.08.2022</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: 600;">Sa'dullayev Bekzod Davronbek o'g'li</td>
+                        <td><span class="badge-international">Xalqaro</span></td>
+                        <td>TEFL</td>
+                        <td>C1</td>
+                        <td>13.11.2023 - 12.11.2025</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: 600;">Adilbekov Fozilbek Adilbek o'g'li</td>
+                        <td><span class="badge-international">Xalqaro</span></td>
+                        <td>IELTS</td>
+                        <td>C1</td>
+                        <td>13.09.2023 - 12.09.2025</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section id="news" class="section section-gray">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-badge" style="background: linear-gradient(to right, #dc2626, #ec4899);">
+                    <i class="fas fa-calendar"></i>
+                    Yangiliklar
+                </div>
+                <h2 class="section-title">Yangiliklar va tadbirlar</h2>
+                <p class="section-description">
+                    Maktab hayotidan so'nggi yangiliklar. Asosiy yangliklarni kuzatib borish uchun 
+                    <a href="./news.html" style="color: #2563eb; font-weight: 600; text-decoration: underline;">Bosing</a>
+                </p>
+            </div>
+
+            <div class="grid-3 fade-in">
+                <article class="card card-gradient-blue">
+                    <div style="height: 8px; background: linear-gradient(to right, #3b82f6, #2563eb); border-radius: 8px 8px 0 0; margin: -2rem -2rem 1.5rem -2rem;"></div>
+                    
+                    <div style="width: 4rem; height: 4rem; background: linear-gradient(135deg, #3b82f6, #2563eb); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
+                        <i class="fas fa-calendar" style="color: white; font-size: 2rem;"></i>
+                    </div>
+
+                    <div style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.5rem;">25 May, 2025</div>
+                    <h4 style="font-size: 1.25rem; font-weight: bold; margin-bottom: 0.75rem; color: #111827;">Qabul</h4>
+                    <p style="color: #6b7280; margin-bottom: 1rem; line-height: 1.6;">2025/2026-o'quv yili uchun hujjatlar qabuli joriy yilning 1-iyundan 20-iyungacha amalga oshiriladi.</p>
+                    
+                    <a href="https://t.me/khiva1son_imi/7413" target="_blank" style="display: inline-flex; align-items: center; color: #2563eb; font-weight: 600; text-decoration: none; font-size: 0.875rem;">
+                        Batafsil o'qish
+                        <i class="fas fa-chevron-right" style="margin-left: 0.25rem; font-size: 1rem;"></i>
+                    </a>
+                </article>
+
+                <article class="card card-gradient-purple">
+                    <div style="height: 8px; background: linear-gradient(to right, #7c3aed, #6366f1); border-radius: 8px 8px 0 0; margin: -2rem -2rem 1.5rem -2rem;"></div>
+                    
+                    <div style="width: 4rem; height: 4rem; background: linear-gradient(135deg, #7c3aed, #6366f1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
+                        <i class="fas fa-laptop" style="color: white; font-size: 2rem;"></i>
+                    </div>
+
+                    <div style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.5rem;">23 May, 2025</div>
+                    <h4 style="font-size: 1.25rem; font-weight: bold; margin-bottom: 0.75rem; color: #111827;">Bitiruv kechasi</h4>
+                    <p style="color: #6b7280; margin-bottom: 1rem; line-height: 1.6;">Xiva shahar ixtisoslashtirilgan maktab-internatida hayajonli va unutilmas daqiqalarga boy "So'nggi qo'ng'iroq" tadbiri bo'lib o'tdi!</p>
+                    
+                    <a href="https://t.me/khiva1son_imi/7385" target="_blank" style="display: inline-flex; align-items: center; color: #7c3aed; font-weight: 600; text-decoration: none; font-size: 0.875rem;">
+                        Batafsil o'qish
+                        <i class="fas fa-chevron-right" style="margin-left: 0.25rem; font-size: 1rem;"></i>
+                    </a>
+                </article>
+
+                <article class="card card-gradient-orange">
+                    <div style="height: 8px; background: linear-gradient(to right, #f97316, #ea580c); border-radius: 8px 8px 0 0; margin: -2rem -2rem 1.5rem -2rem;"></div>
+                    
+                    <div style="width: 4rem; height: 4rem; background: linear-gradient(135deg, #f97316, #ea580c); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
+                        <i class="fas fa-trophy" style="color: white; font-size: 2rem;"></i>
+                    </div>
+
+                    <div style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.5rem;">22 May, 2025</div>
+                    <h4 style="font-size: 1.25rem; font-weight: bold; margin-bottom: 0.75rem; color: #111827;">Taqdirlash marosimi</h4>
+                    <p style="color: #6b7280; margin-bottom: 1rem; line-height: 1.6;">Xiva shahar 1-son ixtisoslashtirilgan maktab-internatida Yil yakuni boʻyicha oʻquvchilarni taqdirlash marosimi oʻtkazildi.</p>
+                    
+                    <a href="https://t.me/khiva1son_imi/7349" target="_blank" style="display: inline-flex; align-items: center; color: #ea580c; font-weight: 600; text-decoration: none; font-size: 0.875rem;">
+                        Batafsil o'qish
+                        <i class="fas fa-chevron-right" style="margin-left: 0.25rem; font-size: 1rem;"></i>
+                    </a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section section-light">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-badge" style="background: linear-gradient(to right, #16a34a, #0d9488);">
+                    <i class="fas fa-envelope"></i>
+                    Aloqa
+                </div>
+                <h2 class="section-title">Aloqa ma'lumotlari</h2>
+                <p class="section-description">Biz bilan bog'laning</p>
+            </div>
+
+            <div class="grid-2">
+                <div class="slide-in-left">
+                    <h3 style="font-size: 2rem; font-weight: bold; margin-bottom: 2rem; color: #111827;">Maktab ma'muriyati</h3>
+
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon red">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h5>Manzil</h5>
+                                <p>Xiva Shahar Sangar mahallasi Buyuk yo'l ko'cha 4-uy</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon green">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h5>Telefon</h5>
+                                <p>+998 (88) 858-49-69</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon blue">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h5>Email</h5>
+                                <p>info@khiva-school1.uz</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon purple">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h5>Ish vaqti</h5>
+                                <p>Dushanba - Shanba: 8:00 - 18:00</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8">
+                        <h4 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 1rem; color: #111827;">Ijtimoiy tarmoqlar</h4>
+                        <div style="display: flex; gap: 1rem;">
+                            <a href="https://www.instagram.com/khiva.imi/" target="_blank" style="width: 3rem; height: 3rem; background: linear-gradient(135deg, #e91e63, #7c3aed); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: all 0.3s ease;">
+                                <i class="fab fa-instagram" style="font-size: 1.5rem;"></i>
+                            </a>
+                            <a href="https://t.me/khiva1son_imi" target="_blank" style="width: 3rem; height: 3rem; background: linear-gradient(135deg, #3b82f6, #2563eb); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: all 0.3s ease;">
+                                <i class="fab fa-telegram" style="font-size: 1.5rem;"></i>
+                            </a>
+                            <a href="https://www.youtube.com/channel/UCaOLW3EsO6zpH0LXSv_QhEg" target="_blank" style="width: 3rem; height: 3rem; background: linear-gradient(135deg, #ef4444, #dc2626); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: all 0.3s ease;">
+                                <i class="fab fa-youtube" style="font-size: 1.5rem;"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slide-in-right">
+                    <div class="contact-form">
+                        <div style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                            <div style="width: 4rem; height: 4rem; background: linear-gradient(135deg, #fb923c, #ec4899); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 1rem;">
+                                <i class="fas fa-envelope" style="color: white; font-size: 2rem;"></i>
+                            </div>
+                            <h3 style="font-size: 1.5rem; font-weight: bold; color: #111827;">Xabar yuborish</h3>
+                        </div>
+
+                        <form onsubmit="sendMessage(event)">
+                            <div class="form-group">
+                                <label for="name" class="form-label">Ismingiz</label>
+                                <input type="text" id="name" class="form-input" placeholder="Ismingizni kiriting" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email manzilingiz</label>
+                                <input type="email" id="email" class="form-input" placeholder="email@example.com" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message" class="form-label">Xabaringiz</label>
+                                <textarea id="message" class="form-textarea" placeholder="Xabaringizni yozing..." required></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary w-full">
+                                <i class="fas fa-paper-plane"></i>
+                                Yuborish
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span class="footer-title">Xiva 1-son Maktab-Internati</span>
+                </div>
+                <p class="footer-description">
+                    Zamonaviy ta'lim, ilg'or texnologiyalar va yuqori sifatli bilim berish orqali kelajak avlodini tayyorlash - bizning asosiy maqsadimiz.
+                </p>
+            </div>
+
+            <div class="footer-social">
+                <a href="https://www.instagram.com/khiva.imi/" target="_blank" class="instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://t.me/khiva1son_imi" target="_blank" class="telegram">
+                    <i class="fab fa-telegram"></i>
+                </a>
+                <a href="https://www.youtube.com/channel/UCaOLW3EsO6zpH0LXSv_QhEg" target="_blank" class="youtube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Xiva shahar 1-son ixtisoslashtirilgan maktab-internati. Barcha huquqlar himoyalangan.</p>
+                <p class="footer-credit">Sayt yaratuvchisi: Ilyos Xudayberganov</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Global variables
+        let isDarkMode = false;
+        let isMobileMenuOpen = false;
+        let activeSection = 'home';
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set up scroll listener for navigation
+            window.addEventListener('scroll', handleScroll);
+            
+            // Set up intersection observer for animations
+            setupIntersectionObserver();
+            
+            // Update active nav link
+            updateActiveNavLink('home');
+        });
+
+        // Theme toggle functionality
+        function toggleTheme() {
+            isDarkMode = !isDarkMode;
+            const body = document.body;
+            const themeIcon = document.getElementById('theme-icon');
+            
+            if (isDarkMode) {
+                body.classList.add('dark');
+                themeIcon.className = 'fas fa-sun';
+            } else {
+                body.classList.remove('dark');
+                themeIcon.className = 'fas fa-moon';
+            }
+        }
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            isMobileMenuOpen = !isMobileMenuOpen;
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuIcon = document.getElementById('mobile-menu-icon');
+            
+            if (isMobileMenuOpen) {
+                mobileMenu.classList.add('active');
+                mobileMenuIcon.className = 'fas fa-times';
+            } else {
+                mobileMenu.classList.remove('active');
+                mobileMenuIcon.className = 'fas fa-bars';
+            }
+        }
+
+        // Smooth scroll to section
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+            
+            // Close mobile menu if open
+            if (isMobileMenuOpen) {
+                toggleMobileMenu();
+            }
+        }
+
+        // Handle scroll events
+        function handleScroll() {
+            const sections = ['home', 'about', 'achievements', 'teachers', 'news', 'contact'];
+            const scrollPosition = window.scrollY + 100;
+
+            for (const section of sections) {
+                const element = document.getElementById(section);
+                if (element) {
+                    const offsetTop = element.offsetTop;
+                    const offsetHeight = element.offsetHeight;
+
+                    if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+                        if (activeSection !== section) {
+                            activeSection = section;
+                            updateActiveNavLink(section);
+                        }
+                        break;
+                    }
+                }
+            }
+        }
+
+        // Update active navigation link
+        function updateActiveNavLink(sectionId) {
+            // Remove active class from all nav links
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+
+            // Add active class to current section link
+            const activeLink = document.querySelector(`a[href="#${sectionId}"]`);
+            if (activeLink && activeLink.classList.contains('nav-link')) {
+                activeLink.classList.add('active');
+            }
+        }
+
+        // Set up intersection observer for animations
+        function setupIntersectionObserver() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all elements with animation classes
+            const animatedElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in');
+            animatedElements.forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        // Handle contact form submission
+        function sendMessage(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            // Here you would typically send the data to a server
+            // For now, we'll just show an alert
+            alert(`Rahmat, ${name}! Sizning xabaringiz qabul qilindi. Tez orada javob beramiz.`);
+            
+            // Reset form
+            event.target.reset();
+        }
+
+        // Add smooth hover effects
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add hover effects to cards
+            const cards = document.querySelectorAll('.card, .stat-card, .achievement-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+
+            // Add hover effects to buttons
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach(btn => {
+                btn.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-2px)';
+                });
+                
+                btn.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+
+            // Add hover effects to social links
+            const socialLinks = document.querySelectorAll('.social-link, .footer-social a');
+            socialLinks.forEach(link => {
+                link.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.1) rotate(5deg)';
+                });
+                
+                link.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1) rotate(0deg)';
+                });
+            });
+        });
+
+        // Add loading animation for numbers
+        function animateNumbers() {
+            const numbers = document.querySelectorAll('.stat-number');
+            numbers.forEach(number => {
+                const target = parseInt(number.textContent);
+                const increment = target / 100;
+                let current = 0;
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    number.textContent = Math.floor(current);
+                }, 20);
+            });
+        }
+
+        // Trigger number animation when hero section is visible
+        const heroSection = document.getElementById('home');
+        const heroObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    setTimeout(animateNumbers, 1000);
+                    heroObserver.unobserve(entry.target);
+                }
+            });
+        });
+
+        if (heroSection) {
+            heroObserver.observe(heroSection);
+        }
+
+        // Add keyboard navigation
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && isMobileMenuOpen) {
+                toggleMobileMenu();
+            }
+        });
+
+        // Add touch gestures for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener('touchstart', function(event) {
+            touchStartX = event.changedTouches[0].screenX;
+        });
+
+        document.addEventListener('touchend', function(event) {
+            touchEndX = event.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+            
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    // Swipe left - next section
+                    navigateToNextSection();
+                } else {
+                    // Swipe right - previous section
+                    navigateToPreviousSection();
+                }
+            }
+        }
+
+        function navigateToNextSection() {
+            const sections = ['home', 'about', 'achievements', 'teachers', 'news', 'contact'];
+            const currentIndex = sections.indexOf(activeSection);
+            const nextIndex = (currentIndex + 1) % sections.length;
+            scrollToSection(sections[nextIndex]);
+        }
+
+        function navigateToPreviousSection() {
+            const sections = ['home', 'about', 'achievements', 'teachers', 'news', 'contact'];
+            const currentIndex = sections.indexOf(activeSection);
+            const prevIndex = currentIndex === 0 ? sections.length - 1 : currentIndex - 1;
+            scrollToSection(sections[prevIndex]);
+        }
+
+        // Optimize images loading
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                img.loading = 'lazy';
+            });
+        });
+
+        // Add parallax effect to hero section
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                const rate = scrolled * -0.5;
+                hero.style.transform = `translateY(${rate}px)`;
+            }
+        });
+
+        // Performance optimization: debounce scroll events
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        // Apply debounce to scroll handler
+        window.addEventListener('scroll', debounce(handleScroll, 10));
+    </script>
+</body>
+</html>
