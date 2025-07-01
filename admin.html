@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Admin Panel - Khiva IMI</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --success-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --warning-gradient: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            --danger-gradient: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            --dark-gradient: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            --light-bg: #f8fafc;
+            --white: #ffffff;
+            --text-primary: #2d3748;
+            --text-secondary: #718096;
+            --border-color: #e2e8f0;
+            --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--light-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-md);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--primary-gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .admin-badge {
+            background: var(--danger-gradient);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-btn {
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-btn.primary {
+            background: var(--primary-gradient);
+            color: white;
+        }
+
+        .nav-btn.secondary {
+            background: var(--border-color);
+            color: var(--text-primary);
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Main Content */
+        .admin-main {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .page-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.125rem;
+        }
+
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+        }
+
+        .stat-card.news::before {
+            background: var(--primary-gradient);
+        }
+
+        .stat-card.views::before {
+            background: var(--success-gradient);
+        }
+
+        .stat-card.users::before {
+            background: var(--warning-gradient);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .stat-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .stat-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .stat-icon.news {
+            background: var(--primary-gradient);
+        }
+
+        .stat-icon.views {
+            background: var(--success-gradient);
+        }
+
+        .stat-icon.users {
+            background: var(--warning-gradient);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--text-primary);
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        }
+
+        /* Form Container */
+        .form-container {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 2rem;
+        }
+
+        .form-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .form-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--secondary-gradient);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .form-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+        }
+
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: var(--white);
+            color: var(--text-primary);
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            transform: translateY(-1px);
+        }
+
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+            font-family: inherit;
+        }
+
+        .char-counter {
+            text-align: right;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: 0.25rem;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: var(--primary-gradient);
+            color: white;
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background: var(--border-color);
+            color: var(--text-primary);
+        }
+
+        .btn-secondary:hover {
+            background: #d1d5db;
+        }
+
+        .btn-success {
+            background: var(--success-gradient);
+            color: white;
+        }
+
+        .btn-danger {
+            background: var(--danger-gradient);
+            color: white;
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* News List */
+        .news-list {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .news-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .news-item:hover {
+            background: #f7fafc;
+        }
+
+        .news-item:last-child {
+            border-bottom: none;
+        }
+
+        .news-info h4 {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .news-info p {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        .news-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn-sm {
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+        }
+
+        /* Loading States */
+        .loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            color: var(--text-secondary);
+        }
+
+        .spinner {
+            width: 24px;
+            height: 24px;
+            border: 3px solid var(--border-color);
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 0.5rem;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Notifications */
+        .notification {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            color: white;
+            font-weight: 600;
+            z-index: 1000;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        .notification.success {
+            background: var(--success-gradient);
+        }
+
+        .notification.error {
+            background: var(--danger-gradient);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .admin-main {
+                padding: 0 1rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-container,
+            .news-list {
+                padding: 1.5rem;
+            }
+
+            .form-actions {
+                flex-direction: column;
+            }
+
+            .news-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .news-actions {
+                width: 100%;
+                justify-content: flex-end;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            .form-container,
+            .news-list {
+                padding: 1rem;
+            }
+        }
+
+        /* Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <span class="logo-text">Khiva IMI</span>
+                <span class="admin-badge">Admin</span>
+            </a>
+            <div class="nav-actions">
+                <a href="index.html" class="nav-btn secondary">
+                    <i class="fas fa-eye"></i>
+                    Saytni ko'rish
+                </a>
+                <a href="#" class="nav-btn primary" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Chiqish
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+        <!-- Page Header -->
+        <div class="page-header fade-in">
+            <h1 class="page-title">Admin Panel</h1>
+            <p class="page-subtitle">Yangiliklar va sayt kontentini boshqaring</p>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="stats-grid fade-in">
+            <div class="stat-card news">
+                <div class="stat-header">
+                    <div class="stat-icon news">
+                        <i class="fas fa-newspaper"></i>
+                    </div>
+                </div>
+                <div class="stat-number" id="newsCount">0</div>
+                <div class="stat-label">Jami yangiliklar</div>
+            </div>
+            <div class="stat-card views">
+                <div class="stat-header">
+                    <div class="stat-icon views">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                </div>
+                <div class="stat-number">1,234</div>
+                <div class="stat-label">Ko'rishlar soni</div>
+            </div>
+            <div class="stat-card users">
+                <div class="stat-header">
+                    <div class="stat-icon users">
+                        <i class="fas fa-users"></i>
+                    </div>
+                </div>
+                <div class="stat-number">244</div>
+                <div class="stat-label">O'quvchilar</div>
+            </div>
+        </div>
+
+        <!-- Add News Form -->
+        <div class="form-container fade-in">
+            <div class="form-header">
+                <div class="form-icon">
+                    <i class="fas fa-plus"></i>
+                </div>
+                <div>
+                    <h2 class="form-title">Yangi yangilik qo'shish</h2>
+                    <p style="color: var(--text-secondary); margin: 0;">Maktab yangiliklari va e'lonlarini qo'shing</p>
+                </div>
+            </div>
+
+            <form id="news-form">
+                <div class="form-group">
+                    <label for="title" class="form-label">
+                        <i class="fas fa-heading"></i>
+                        Sarlavha
+                    </label>
+                    <input 
+                        type="text" 
+                        id="title" 
+                        class="form-input" 
+                        placeholder="Yangilik sarlavhasini kiriting..." 
+                        required
+                        maxlength="100"
+                    />
+                    <div class="char-counter">
+                        <span id="titleCounter">0</span>/100
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="content" class="form-label">
+                        <i class="fas fa-align-left"></i>
+                        Yangilik matni
+                    </label>
+                    <textarea 
+                        id="content" 
+                        class="form-textarea" 
+                        placeholder="Yangilik matnini kiriting..." 
+                        required
+                        maxlength="1000"
+                    ></textarea>
+                    <div class="char-counter">
+                        <span id="contentCounter">0</span>/1000
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" onclick="clearForm()">
+                        <i class="fas fa-times"></i>
+                        Tozalash
+                    </button>
+                    <button type="submit" class="btn btn-primary" id="submitBtn">
+                        <i class="fas fa-save"></i>
+                        Saqlash
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- News List -->
+        <div class="news-list fade-in">
+            <div class="form-header">
+                <div class="form-icon" style="background: var(--warning-gradient);">
+                    <i class="fas fa-list"></i>
+                </div>
+                <div>
+                    <h2 class="form-title">Mavjud yangiliklar</h2>
+                    <p style="color: var(--text-secondary); margin: 0;">Barcha yangiliklar ro'yxati</p>
+                </div>
+            </div>
+
+            <div id="news-list-container">
+                <div class="loading">
+                    <div class="spinner"></div>
+                    Yangiliklar yuklanmoqda...
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Notification -->
+    <div id="notification" class="notification"></div>
+
+    <!-- Firebase SDK -->
+    <script type="module">
+        // Firebase konfiguratsiyasi
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+        import { 
+            getFirestore, 
+            collection, 
+            addDoc, 
+            onSnapshot, 
+            deleteDoc,
+            doc,
+            orderBy, 
+            query 
+        } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+
+        // Firebase konfiguratsiya obyekti
+        const firebaseConfig = {
+            apiKey: "AIzaSyASPn93j0gaTfRNuKZ3F6q47CGBeus2fzY",
+            authDomain: "khivaimi1.firebaseapp.com",
+            projectId: "khivaimi1",
+            storageBucket: "khivaimi1.firebasestorage.app",
+            messagingSenderId: "541131443062",
+            appId: "1:541131443062:web:b68f095be3bc4ac61a0857",
+            measurementId: "G-WFMQSESQXF"
+        };
+
+        // Firebase ni ishga tushirish
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // DOM elementlari
+        const newsForm = document.getElementById('news-form');
+        const titleInput = document.getElementById('title');
+        const contentInput = document.getElementById('content');
+        const submitBtn = document.getElementById('submitBtn');
+        const newsListContainer = document.getElementById('news-list-container');
+        const newsCountElement = document.getElementById('newsCount');
+
+        // Character counters
+        titleInput.addEventListener('input', function() {
+            document.getElementById('titleCounter').textContent = this.value.length;
+        });
+
+        contentInput.addEventListener('input', function() {
+            document.getElementById('contentCounter').textContent = this.value.length;
+        });
+
+        // Form submission
+        newsForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const title = titleInput.value.trim();
+            const content = contentInput.value.trim();
+
+            if (!title || !content) {
+                showNotification('Iltimos, barcha maydonlarni to\'ldiring.', 'error');
+                return;
+            }
+
+            // Disable submit button
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saqlanmoqda...';
+
+            try {
+                await addDoc(collection(db, "news"), {
+                    title,
+                    content,
+                    createdAt: new Date()
+                });
+
+                showNotification('Yangilik muvaffaqiyatli qo\'shildi!', 'success');
+                clearForm();
+            } catch (error) {
+                console.error("Xato:", error);
+                showNotification('Xato: Yangilik qo\'shilmadi.', 'error');
+            } finally {
+                // Re-enable submit button
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-save"></i> Saqlash';
+            }
+        });
+
+        // Load news list
+        function loadNewsList() {
+            try {
+                const newsQuery = query(
+                    collection(db, "news"), 
+                    orderBy("createdAt", "desc")
+                );
+
+                onSnapshot(newsQuery, (snapshot) => {
+                    let newsItems = [];
+                    snapshot.forEach((doc) => {
+                        newsItems.push({
+                            id: doc.id,
+                            data: doc.data()
+                        });
+                    });
+                    displayNewsList(newsItems);
+                    updateNewsCount(newsItems.length);
+                }, (error) => {
+                    console.error("Yangiliklar yuklanishda xatolik:", error);
+                    newsListContainer.innerHTML = '<div class="loading" style="color: #f56565;">Yangiliklar yuklanishda xatolik</div>';
+                });
+            } catch (error) {
+                console.error("Firebase ulanishida xatolik:", error);
+                loadDemoNewsList();
+            }
+        }
+
+        // Display news list
+        function displayNewsList(newsItems) {
+            if (newsItems.length === 0) {
+                newsListContainer.innerHTML = '<div class="loading">Hali yangiliklar yo\'q</div>';
+                return;
+            }
+
+            let html = '';
+            newsItems.forEach(({ id, data }) => {
+                const date = data.createdAt ? data.createdAt.toDate().toLocaleDateString('uz-UZ') : 'Bugun';
+                const shortContent = data.content.length > 100 ? data.content.substring(0, 100) + '...' : data.content;
+                
+                html += `
+                    <div class="news-item">
+                        <div class="news-info">
+                            <h4>${data.title}</h4>
+                            <p>${shortContent}</p>
+                            <small style="color: var(--text-secondary);">📅 ${date}</small>
+                        </div>
+                        <div class="news-actions">
+                            <button class="btn btn-sm btn-danger" onclick="deleteNews('${id}')">
+                                <i class="fas fa-trash"></i>
+                                O'chirish
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            newsListContainer.innerHTML = html;
+        }
+
+        // Delete news
+        window.deleteNews = async function(id) {
+            if (!confirm('Bu yangilikni o\'chirishni xohlaysizmi?')) {
+                return;
+            }
+
+            try {
+                await deleteDoc(doc(db, "news", id));
+                showNotification('Yangilik o\'chirildi', 'success');
+            } catch (error) {
+                console.error("O'chirishda xatolik:", error);
+                showNotification('O\'chirishda xatolik yuz berdi', 'error');
+            }
+        };
+
+        // Update news count
+        function updateNewsCount(count) {
+            let currentCount = 0;
+            const increment = count / 30;
+            const timer = setInterval(() => {
+                currentCount += increment;
+                if (currentCount >= count) {
+                    currentCount = count;
+                    clearInterval(timer);
+                }
+                newsCountElement.textContent = Math.floor(currentCount);
+            }, 50);
+        }
+
+        // Demo news list
+        function loadDemoNewsList() {
+            const demoNews = [
+                {
+                    id: "demo1",
+                    data: {
+                        title: "Demo yangilik 1",
+                        content: "Bu demo yangilik matni. Firebase ulanmagan.",
+                        createdAt: new Date()
+                    }
+                }
+            ];
+            displayNewsList(demoNews);
+            updateNewsCount(demoNews.length);
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            loadNewsList();
+            
+            // Demo ma'lumotlar 5 soniyadan keyin
+            setTimeout(() => {
+                if (newsListContainer.innerHTML.includes('yuklanmoqda')) {
+                    loadDemoNewsList();
+                }
+            }, 5000);
+        });
+    </script>
+
+    <!-- Additional JavaScript -->
+    <script>
+        // Clear form
+        function clearForm() {
+            document.getElementById('news-form').reset();
+            document.getElementById('titleCounter').textContent = '0';
+            document.getElementById('contentCounter').textContent = '0';
+        }
+
+        // Show notification
+        function showNotification(message, type) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.className = `notification ${type}`;
+            notification.classList.add('show');
+
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+
+        // Logout function
+        function logout() {
+            if (confirm('Admin paneldan chiqishni xohlaysizmi?')) {
+                window.location.href = 'index.html';
+            }
+        }
+
+        // Animation on load
+        document.addEventListener('DOMContentLoaded', function() {
+            const elements = document.querySelectorAll('.fade-in');
+            elements.forEach((el, index) => {
+                el.style.animationDelay = `${index * 0.1}s`;
+            });
+        });
+
+        // Auto-save draft (localStorage)
+        const titleInput = document.getElementById('title');
+        const contentInput = document.getElementById('content');
+
+        function saveDraft() {
+            localStorage.setItem('newsTitle', titleInput.value);
+            localStorage.setItem('newsContent', contentInput.value);
+        }
+
+        function loadDraft() {
+            const savedTitle = localStorage.getItem('newsTitle');
+            const savedContent = localStorage.getItem('newsContent');
+            
+            if (savedTitle) titleInput.value = savedTitle;
+            if (savedContent) contentInput.value = savedContent;
+            
+            // Update counters
+            document.getElementById('titleCounter').textContent = titleInput.value.length;
+            document.getElementById('contentCounter').textContent = contentInput.value.length;
+        }
+
+        titleInput.addEventListener('input', saveDraft);
+        contentInput.addEventListener('input', saveDraft);
+
+        // Load draft on page load
+        window.addEventListener('load', loadDraft);
+
+        // Clear draft on successful submit
+        document.getElementById('news-form').addEventListener('submit', function() {
+            setTimeout(() => {
+                localStorage.removeItem('newsTitle');
+                localStorage.removeItem('newsContent');
+            }, 1000);
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            // Ctrl+S to save
+            if (e.ctrlKey && e.key === 's') {
+                e.preventDefault();
+                document.getElementById('news-form').dispatchEvent(new Event('submit'));
+            }
+            
+            // Ctrl+R to clear form
+            if (e.ctrlKey && e.key === 'r') {
+                e.preventDefault();
+                clearForm();
+            }
+        });
+    </script>
+</body>
+</html>
