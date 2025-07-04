@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Xiva shahar 1-son ixtisoslashtirilgan maktab-internati</title>
-    <meta name="google-site-verification" content="EhfqGizifCqNQIM68CLad0Zgm0nVbi3Fhzv72r2e1fA" />
+    
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
@@ -13,14 +13,16 @@
     
     <!-- Google Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!-- Google Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <meta name="description" content="Xorazm viloyati Xiva shahar 1-son ixtisoslashtirilgan maktab-internati. Ushbu maktab zamonaviy labaratoriya jihozlari, o'quvchilar uchun oshxona, futbol, basketbol, valeybol va yugurish maydonchalri tashkil qilingan bo'lib, maktabda 244 nafar o'quvchi taxsil olaladi. O'quvchilar uchun dushanbadan juma kunigacha har kuni 5 mahal ovqat bilan ta'minlanadi. O'quv binosi interaktiv doskalar, qo'shimcha xonalar va ingliz tili, matematika, fizika o'zbeksiton tarixi fanlariga ixtisoslashgan bo'lib, bugungi kunda 20 nafardan ortiq o'quvchi xalqaro va milliy sertifkatga ega bo'lgan. O'quvchilar, o'qituvchialr, yangliklar, milliy va xalqaro sertifikatga ega o'quvchilar, olimpiada g'oliblari..." />
     <meta name="keywords" content="Khiva IMI, 1-son, Ilyos Xudayberganov, 1-son ixtisoslashtirilgan maktab-internati, 1-son IMI, ta'lim, o'zbekiston maktablari, xiva, xiva shahar, maktab, olimpiada, milliy, xalqaro, IELTS, CESR, SAT, khiva news" />
     <meta name="author" content="Ilyos Xudayberganov" />
-    <link rel="canonical" href="https://khiva-imi-1.vercel.app" />
+    <link rel="canonical" href="https://xivaimi1.vercel.app" />
     <!-- Ijtimoiy tarmoqlar uchun meta teglari -->
     <meta property="og:title" content="Khiva IMI 1-son - Ilyos Xudayberganov" />
     <meta property="og:description" content="Xorazm viloyati Xiva shahar 1-son ixtisoslashtirilgan maktab-internati. Ushbu maktab zamonaviy labaratoriya jihozlari, o'quvchilar uchun oshxona, futbol, basketbol, valeybol va yugurish maydonchalri tashkil qilingan bo'lib, maktabda 244 nafar o'quvchi taxsil olaladi. O'quvchilar uchun dushanbadan juma kunigacha har kuni 5 mahal ovqat bilan ta'minlanadi. O'quv binosi interaktiv doskalar, qo'shimcha xonalar va ingliz tili, matematika, fizika o'zbeksiton tarixi fanlariga ixtisoslashgan bo'lib, bugungi kunda 20 nafardan ortiq o'quvchi xalqaro va milliy sertifkatga ega bo'lgan. O'quvchilar, o'qituvchialr, yangliklar, milliy va xalqaro sertifikatga ega o'quvchilar, olimpiada g'oliblari..." />
-    <meta property="og:url" content="https://khiva-imi-1.vercel.app" />
+    <meta property="og:url" content="https://xivaimi1.vercel.app" />
     <meta property="og:type" content="website" />
     
     <style>
@@ -449,6 +451,74 @@
             background: rgba(37, 99, 235, 0.1);
             color: var(--primary-color);
             transform: translateX(0.5rem);
+        }
+        
+        /* Mobile Bottom Navigation */
+        .mobile-bottom-nav {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            border-top: 1px solid var(--gray-200);
+            padding: 0.75rem 0;
+            z-index: 1000;
+            box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .dark .mobile-bottom-nav {
+            background: var(--gray-800);
+            border-top-color: var(--gray-600);
+        }
+        
+        .mobile-nav-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 0.5rem;
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .mobile-nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem 0.25rem;
+            text-decoration: none;
+            color: var(--gray-600);
+            transition: var(--transition);
+            border-radius: 0.5rem;
+            min-height: 60px;
+        }
+        
+        .dark .mobile-nav-item {
+            color: var(--gray-400);
+        }
+        
+        .mobile-nav-item:hover,
+        .mobile-nav-item.active {
+            color: var(--primary-color);
+            background: rgba(37, 99, 235, 0.1);
+        }
+        
+        .mobile-nav-item i {
+            font-size: 1.25rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .mobile-nav-item .material-icons {
+            font-size: 1.25rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .mobile-nav-item span {
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-align: center;
+            line-height: 1.2;
         }
         
         .mobile-social-links {
@@ -910,6 +980,7 @@
         .chat-input {
             display: flex;
             border-top: 1px solid #e5e7eb;
+            height: 50px;
         }
         
         .chat-input input {
@@ -925,6 +996,7 @@
             border: none;
             padding: 0 15px;
             cursor: pointer;
+            width: 120px;
         }
 
         /* Section Styles */
@@ -1636,6 +1708,21 @@
             .certificate-gallery {
                 grid-template-columns: repeat(2, 1fr);
             }
+            
+            /* Show mobile bottom navigation */
+            .mobile-bottom-nav {
+                display: block;
+            }
+            
+            /* Hide regular mobile menu */
+            .mobile-menu {
+                display: none !important;
+            }
+            
+            /* Add bottom padding to body to account for bottom nav */
+            body {
+                padding-bottom: 80px;
+            }
         }
         
         @media (max-width: 768px) {
@@ -1704,7 +1791,7 @@
             }
             
             .chat-widget {
-                bottom: 20px;
+                bottom: 100px;
                 right: 20px;
             }
             
@@ -1712,11 +1799,13 @@
                 width: 60px;
                 height: 60px;
                 font-size: 24px;
+                bottom: 100px;
             }
             
-            .chat-window {
-                width: 320px;
-                bottom: 80px;
+            /* Make chat send button wider on mobile */
+            .chat-input button {
+                width: 140px;
+                font-size: 0.875rem;
             }
             
             .contact-form {
@@ -1743,10 +1832,24 @@
             }
             
             .visitor-counter {
-                bottom: 10px;
+                bottom: 100px;
                 left: 10px;
                 font-size: 0.75rem;
                 padding: 0.5rem 0.75rem;
+            }
+            
+            /* Mobile nav grid adjustments */
+            .mobile-nav-grid {
+                padding: 0 0.5rem;
+            }
+            
+            .mobile-nav-item {
+                padding: 0.4rem 0.2rem;
+                min-height: 55px;
+            }
+            
+            .mobile-nav-item span {
+                font-size: 0.7rem;
             }
         }
         
@@ -1767,17 +1870,23 @@
                 padding: 1.5rem;
             }
             
-            .chat-window {
-                width: 280px;
-                right: -10px;
-            }
-            
-            .mobile-menu {
-                padding: 1rem;
-            }
-            
             .global-search {
                 width: 95%;
+            }
+            
+            .mobile-nav-item {
+                padding: 0.3rem 0.1rem;
+                min-height: 50px;
+            }
+            
+            .mobile-nav-item i,
+            .mobile-nav-item .material-icons {
+                font-size: 1.1rem;
+                margin-bottom: 0.2rem;
+            }
+            
+            .mobile-nav-item span {
+                font-size: 0.65rem;
             }
         }
 
@@ -1861,7 +1970,6 @@
         }
     </style>
 </head>
-
 <body>
     <!-- Language Selector -->
     <div class="language-selector">
@@ -1997,56 +2105,39 @@
                 <i class="material-icons" id="mobile-menu-icon">menu</i>
             </button>
         </div>
-        <div class="mobile-menu" id="mobile-menu">
-            <a href="#home" onclick="scrollToSection('home')">
+    </nav>
+
+    <!-- Mobile Bottom Navigation -->
+    <div class="mobile-bottom-nav" id="mobile-bottom-nav">
+        <div class="mobile-nav-grid">
+            <a href="#home" class="mobile-nav-item active" onclick="scrollToSection('home')">
                 <i class="material-icons">home</i>
                 <span data-translate="home">Bosh sahifa</span>
             </a>
-            <a href="#about" onclick="scrollToSection('about')">
-                <i class="material-icons">school</i>
-                <span data-translate="about">Maktab haqida</span>
+            <a href="#achievements" class="mobile-nav-item" onclick="scrollToSection('about')">
+                <i class="material-icons">diamond</i>
+                <span data-translate="about">Yutuqlar</span>
             </a>
-            <a href="#achievements" onclick="scrollToSection('achievements')">
-                <i class="material-icons">emoji_events</i>
-                <span data-translate="achievements">Yutuqlar</span>
+            <a href="./news.html" class="mobile-nav-item" onclick="scrollToSection('achievements')">
+                <i class="material-icons">apps</i>
+                <span data-translate="achievements">Yangiliklar</span>
             </a>
-            <a href="#teachers" onclick="scrollToSection('teachers')">
-                <i class="material-icons">people</i>
-                <span data-translate="teachers">O'qituvchilar</span>
-            </a>
-            <a href="#certificates" onclick="scrollToSection('certificates')">
-                <i class="material-icons">workspace_premium</i>
-                <span data-translate="certificates">Sertifikatlar</span>
-            </a>
-            <a href="#news" onclick="scrollToSection('news')">
-                <i class="material-icons">article</i>
-                <span data-translate="news">Yangiliklar</span>
-            </a>
-            <a href="./login.html">
-                <i class="material-icons">login</i>
-                <span data-translate="student_diary">O'quvchilar kundaligi</span>
-            </a>
-            <a href="#contact" onclick="scrollToSection('contact')">
-                <i class="material-icons">contact_mail</i>
-                <span data-translate="contact">Aloqa</span>
+            <a href="./login.html" class="mobile-nav-item">
+                <i class="material-icons">person</i>
+                <span data-translate="student_diary">Profil</span>
             </a>
             
-            <div class="mobile-social-links">
-                <a href="https://www.instagram.com/khiva.imi" target="_blank" class="mobile-social-link instagram">
-                    <i class="fab fa-instagram"></i>
-                    <span>Instagram</span>
-                </a>
-                <a href="https://t.me/khiva1son_imi" target="_blank" class="mobile-social-link telegram">
-                    <i class="fab fa-telegram"></i>
-                    <span>Telegram</span>
-                </a>
-                <a href="https://www.youtube.com/channel/UCaOLW3EsO6zpH0LXSv_QhEg" target="_blank" class="mobile-social-link youtube">
-                    <i class="fab fa-youtube"></i>
-                    <span>YouTube</span>
-                </a>
-            </div>
+            <a href="#certificates" class="mobile-nav-item" onclick="scrollToSection('certificates')">
+                <i class="material-icons">send</i>
+                <span data-translate="certificates">Galleriya</span>
+            </a>
+            <a href="#contact" class="mobile-nav-item" onclick="scrollToSection('contact')">
+                <i class="material-icons">alternate_email</i>
+                <span data-translate="contact">Bog'lanish</span>
+            </a>
+            
         </div>
-    </nav>
+    </div>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
@@ -2168,7 +2259,6 @@
                     </div>
                 </div>
             </div>
-
             <!-- Additional facility images -->
             <div class="grid-3" style="margin-top: 3rem;">
                 <div class="slide-in-right">
@@ -2218,7 +2308,6 @@
                     Bizning o'quvchilarimizning erishgan muvaffaqiyatlari
                 </p>
             </div>
-
             <!-- Olympic Winners -->
             <div class="fade-in" style="margin-bottom: 4rem;">
                 <h3 class="text-center" style="font-size: 2rem; font-weight: bold; margin-bottom: 3rem; color: var(--gray-900);" data-translate="olympiad_winners">Olimpiada g'oliblari</h3>
@@ -2267,7 +2356,6 @@
                     </div>
                 </div>
             </div>
-
             <!-- Website Creator -->
             <div class="fade-in" style="margin-bottom: 4rem;">
                 <h3 class="text-center" style="font-size: 2rem; font-weight: bold; margin-bottom: 3rem; color: var(--gray-900);" data-translate="website_creator">Sayt yaratuvchisi</h3>
@@ -2300,7 +2388,6 @@
                     </div>
                 </div>
             </div>
-
             <!-- Certificates Table -->
             <div class="fade-in">
                 <h3 class="text-center" style="font-size: 2rem; font-weight: bold; margin-bottom: 3rem; color: var(--gray-900);" data-translate="international_national_certificates">Xalqaro va milliy sertifikatlar</h3>
@@ -2494,7 +2581,6 @@
                     Malakali va tajribali pedagoglar
                 </p>
             </div>
-
             <!-- Featured Teachers -->
             <div class="grid-3 fade-in" style="margin-bottom: 4rem;">
                 <div class="teacher-card computer">
@@ -2525,7 +2611,6 @@
                     <p style="font-size: 0.875rem; color: var(--gray-600);">SAT - 1050</p>
                 </div>
             </div>
-
             <!-- All Teachers Grid -->
             <div class="fade-in" style="margin-bottom: 4rem;">
                 <h3 class="text-center" style="font-size: 2rem; font-weight: bold; margin-bottom: 3rem; color: var(--gray-900);" data-translate="all_teachers">Barcha o'qituvchilar</h3>
@@ -2539,7 +2624,6 @@
                     </button>
                 </div>
             </div>
-
             <!-- Teachers Certificates Table -->
             <div class="fade-in">
                 <div class="table-container">
@@ -2719,7 +2803,6 @@
                     Xalqaro va milliy sertifikatlar to'plami
                 </p>
             </div>
-
             <!-- Certificate Search -->
             <div class="certificate-search fade-in">
                 <div style="position: relative;">
@@ -2727,7 +2810,6 @@
                     <input type="text" id="certificateSearch" placeholder="Sertifikat qidirish..." data-translate-placeholder="search_certificate" oninput="searchCertificates(this.value)">
                 </div>
             </div>
-
             <!-- Certificate Gallery -->
             <div class="certificate-gallery fade-in" id="certificateGallery">
                 <!-- Certificates will be populated by JavaScript -->
@@ -2933,7 +3015,7 @@
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2024 <span data-translate="school_name">Xiva shahar 1-son ixtisoslashtirilgan maktab-internati</span>. <span data-translate="all_rights_reserved">Barcha huquqlar himoyalangan.</span></p>
-                <p class="footer-credit" data-translate="website_creator_credit">Sayt yaratuvchisi: Ilyos Xudayberganov</p>
+                <a class="footer-credit" href="./admin.html" style="text-decoration: none;" data-translate="website_creator_credit">Sayt yaratuvchisi: Ilyos Xudayberganov</a>
             </div>
         </div>
     </footer>
@@ -3289,7 +3371,7 @@
                 card.className = 'certificate-card';
                 
                 card.innerHTML = `
-                    <img src="/placeholder.svg?height=200&width=300" alt="${cert.title}" class="certificate-image">
+                    <img src="./sat1" alt="${cert.title}" class="certificate-image">
                     <div class="certificate-info">
                         <h4 class="certificate-title">${cert.title}</h4>
                         <span class="certificate-type ${cert.type}">${
@@ -3502,6 +3584,22 @@
             if (document.getElementById('globalSearch').classList.contains('active')) {
                 closeGlobalSearch();
             }
+
+            // Update mobile bottom nav active state
+            updateMobileNavActive(sectionId);
+        }
+
+        // Update mobile bottom navigation active state
+        function updateMobileNavActive(sectionId) {
+            const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
+            mobileNavItems.forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            const activeItem = document.querySelector(`.mobile-nav-item[href="#${sectionId}"]`);
+            if (activeItem) {
+                activeItem.classList.add('active');
+            }
         }
 
         // Handle scroll events
@@ -3518,6 +3616,7 @@
                         if (activeSection !== section) {
                             activeSection = section;
                             updateActiveNavLink(section);
+                            updateMobileNavActive(section);
                         }
                         break;
                     }
@@ -3601,11 +3700,12 @@
         function setupContactForm() {
             const TELEGRAM_BOT_TOKEN = '7147444711:AAHnNrhj3G_2RegJkkmpBs5nbLXl49G8TQ0';
             const TELEGRAM_CHAT_ID = '5717695158';
-            const contactForm = document.getElementById('contactForm');
 
+            const contactForm = document.getElementById('contactForm');
             if (contactForm) {
                 contactForm.addEventListener('submit', async function (e) {
                     e.preventDefault();
+
                     const submitBtn = contactForm.querySelector('button[type="submit"]');
                     const originalText = submitBtn.innerHTML;
                     submitBtn.innerHTML = '<div class="loading"></div> Yuborilmoqda...';
@@ -3769,13 +3869,13 @@
         import { getDatabase, ref, push, onChildAdded } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-database.js";
 
         const firebaseConfig = {
-            apiKey: "AIzaSyB2XMLYLJVxQivuZ563vwLUfaEOuNIsO14",
-            authDomain: "schooln1-226b3.firebaseapp.com",
-            databaseURL: "https://schooln1-226b3-default-rtdb.firebaseio.com",
-            projectId: "schooln1-226b3",
-            storageBucket: "schooln1-226b3.appspot.com",
-            messagingSenderId: "1054581650168",
-            appId: "1:1054581650168:web:3f4eeb478b5e1676cec10d"
+             apiKey: "AIzaSyASPn93j0gaTfRNuKZ3F6q47CGBeus2fzY",
+            authDomain: "khivaimi1.firebaseapp.com",
+            projectId: "khivaimi1",
+            storageBucket: "khivaimi1.firebasestorage.app",
+            messagingSenderId: "541131443062",
+            appId: "1:541131443062:web:9b50134f580e18da1a0857",
+            measurementId: "G-W16ER5KBPQ"
         };
 
         const app = initializeApp(firebaseConfig);
