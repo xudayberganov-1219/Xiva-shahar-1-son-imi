@@ -2758,7 +2758,7 @@
     </section>
 
     <!-- Certificates Section -->
-    <section id="certificates" class="section section-gray">
+     <section id="certificates" class="section section-gray">
         <div class="container">
             <div class="section-header fade-in">
                 <div class="section-badge" style="background: linear-gradient(135deg, var(--secondary-color), #ec4899);">
@@ -3316,13 +3316,97 @@
         ];
 
         // Certificates data
-        const certificatesData = Array.from({length: 100}, (_, i) => ({
-            id: i + 1,
-            title: `Sertifikat ${i + 1}`,
-            type: i % 2 === 0 ? 'international' : 'national',
-            image: `/placeholder.svg?height=200&width=300`,
-            description: `Bu ${i % 2 === 0 ? 'xalqaro' : 'milliy'} sertifikat haqida qisqacha ma'lumot`
-        }));
+        const certificates = [
+            { title: "IELTS sertifikati", type: "international", student: "Nazarov Abbosbek", score: "5.5", date: "2025" },
+            { title: "IELTS sertifikati", type: "international", student: "Jumaniyozov Shohjahon", score: "6.0", date: "2024" },
+            { title: "SAT sertifikati", type: "international", student: "Jabbarganov Boburbek", score: "1060", date: "2025" },
+            { title: "Milliy ingliz tili sertifikati", type: "national", student: "Maratova Shahrizoda", score: "56 (B2)", date: "2025" },
+            { title: "Milliy ingliz tili sertifikati", type: "national", student: "Botirova Dilobar", score: "63 (B2)", date: "2024" },
+            { title: "Milliy matematika sertifikati", type: "national", student: "Baxodirova Sevara", score: "48,87 (75,18%)", date: "2024" },
+            { title: "STEAM sertifikati", type: "international", student: "Matyoqubov Bexruz", score: "1-o'rin", date: "2025" },
+            { title: "STEAM sertifikati", type: "international", student: "Davronbekov Saifalixon", score: "2-o'rin", date: "2025" }
+        ];
+         function populateCertificatesGallery(limit = 4) {
+            const gallery = document.getElementById('certificateGallery');
+            gallery.innerHTML = '';
+            
+            const displayedCertificates = certificates.slice(0, limit);
+            
+            displayedCertificates.forEach(cert => {
+                const card = document.createElement('div');
+                card.className = 'certificate-card';
+                
+                card.innerHTML = `
+                    <img src="/placeholder.svg?height=200&width=300" alt="${cert.title}" class="certificate-image">
+                    <div class="certificate-info">
+                        <h4 class="certificate-title">${cert.title}</h4>
+                        <span class="certificate-type ${cert.type}">${
+                            cert.type === 'international' ? 'Xalqaro' : 'Milliy'
+                        }</span>
+                        <p style="color: var(--gray-600); margin-bottom: 0.5rem; font-size: 0.875rem;">
+                            <strong>O'quvchi:</strong> ${cert.student}
+                        </p>
+                        <p style="color: var(--gray-600); font-size: 0.875rem;">
+                            <strong>Bali:</strong> ${cert.score} | <strong>Yil:</strong> ${cert.date}
+                        </p>
+                    </div>
+                `;
+                
+                gallery.appendChild(card);
+            });
+            
+            // Show/hide "Show More" button
+            document.getElementById('showMoreCertificates').style.display = 
+                limit >= certificates.length ? 'none' : 'inline-flex';
+        }
+
+        // Search Certificates
+        function searchCertificates(query) {
+            const filtered = certificates.filter(cert => 
+                cert.title.toLowerCase().includes(query.toLowerCase()) || 
+                cert.student.toLowerCase().includes(query.toLowerCase()) ||
+                cert.type.toLowerCase().includes(query.toLowerCase())
+            );
+            
+            const gallery = document.getElementById('certificateGallery');
+            gallery.innerHTML = '';
+            
+            if (filtered.length === 0) {
+                gallery.innerHTML = `
+                    <div class="text-center" style="grid-column: 1 / -1; padding: 2rem;">
+                        <i class="material-icons" style="font-size: 3rem; color: var(--gray-400); margin-bottom: 1rem;">search_off</i>
+                        <h4 style="color: var(--gray-600);" data-translate="no_results">Hech qanday natija topilmadi</h4>
+                    </div>
+                `;
+                document.getElementById('showMoreCertificates').style.display = 'none';
+                return;
+            }
+            
+            filtered.forEach(cert => {
+                const card = document.createElement('div');
+                card.className = 'certificate-card';
+                
+                card.innerHTML = `
+                    <img src="/placeholder.svg?height=200&width=300" alt="${cert.title}" class="certificate-image">
+                    <div class="certificate-info">
+                        <h4 class="certificate-title">${cert.title}</h4>
+                        <span class="certificate-type ${cert.type}">${
+                            cert.type === 'international' ? 'Xalqaro' : 'Milliy'
+                        }</span>
+                        <p style="color: var(--gray-600); margin-bottom: 0.5rem; font-size: 0.875rem;">
+                            <strong>O'quvchi:</strong> ${cert.student}
+                        </p>
+                        <p style="color: var(--gray-600); font-size: 0.875rem;">
+                            <strong>Bali:</strong> ${cert.score} | <strong>Yil:</strong> ${cert.date}
+                        </p>
+                    </div>
+                `;
+                
+                gallery.appendChild(card);
+            });
+            
+            document.getElementById('showMoreCertificates').style.display = 'none';
+        }
 
         // Initialize the page
         document.addEventListener('DOMContentLoaded', function() {
