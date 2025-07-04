@@ -12,10 +12,9 @@
             padding: 0;
             box-sizing: border-box;
         }
-
         :root {
             --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --secondary-gradient: linear-gradient(135deg, #fef6ff 0%, #e76d7d 100%);
             --success-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
             --warning-gradient: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
             --dark-gradient: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
@@ -29,7 +28,6 @@
             --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
             --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
-
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: var(--light-bg);
@@ -37,7 +35,6 @@
             line-height: 1.6;
             overflow-x: hidden;
         }
-
         /* Modern Navbar */
         .navbar {
             background: rgba(255, 255, 255, 0.95);
@@ -49,11 +46,9 @@
             z-index: 1000;
             transition: all 0.3s ease;
         }
-
         .navbar.scrolled {
             box-shadow: var(--shadow-lg);
         }
-
         .nav-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -62,7 +57,6 @@
             justify-content: space-between;
             align-items: center;
         }
-
         .logo {
             display: flex;
             align-items: center;
@@ -70,11 +64,9 @@
             text-decoration: none;
             transition: transform 0.3s ease;
         }
-
         .logo:hover {
             transform: scale(1.05);
         }
-
         .logo-icon {
             width: 48px;
             height: 48px;
@@ -87,7 +79,6 @@
             font-size: 1.5rem;
             font-weight: bold;
         }
-
         .logo-text {
             font-size: 1.5rem;
             font-weight: 800;
@@ -96,14 +87,12 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-
         .nav-links {
             display: flex;
             list-style: none;
             gap: 2rem;
             align-items: center;
         }
-
         .nav-links a {
             text-decoration: none;
             color: var(--text-primary);
@@ -113,14 +102,12 @@
             transition: all 0.3s ease;
             position: relative;
         }
-
         .nav-links a:hover {
             background: var(--primary-gradient);
             color: white;
             transform: translateY(-2px);
             box-shadow: var(--shadow-md);
         }
-
         /* Hero Section */
         .hero {
             background: var(--primary-gradient);
@@ -130,7 +117,6 @@
             position: relative;
             overflow: hidden;
         }
-
         .hero::before {
             content: '';
             position: absolute;
@@ -141,7 +127,6 @@
             background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="white" opacity="0.1"><polygon points="0,0 1000,0 1000,100 0,20"/></svg>');
             background-size: cover;
         }
-
         .hero-content {
             max-width: 800px;
             margin: 0 auto;
@@ -149,21 +134,18 @@
             position: relative;
             z-index: 2;
         }
-
         .hero h1 {
             font-size: 3rem;
             font-weight: 800;
             margin-bottom: 1rem;
             animation: fadeInUp 0.8s ease;
         }
-
         .hero p {
             font-size: 1.25rem;
             opacity: 0.9;
             margin-bottom: 2rem;
             animation: fadeInUp 0.8s ease 0.2s both;
         }
-
         .hero-stats {
             display: flex;
             justify-content: center;
@@ -171,59 +153,50 @@
             margin-top: 2rem;
             animation: fadeInUp 0.8s ease 0.4s both;
         }
-
         .stat-item {
             text-align: center;
         }
-
         .stat-number {
             font-size: 2rem;
             font-weight: 800;
             display: block;
         }
-
         .stat-label {
             font-size: 0.875rem;
             opacity: 0.8;
         }
-
         /* News Section */
         .news-section {
-            max-width: 1200px;
+            max-width: 1000px;
             margin: -2rem auto 4rem;
             padding: 0 2rem;
             position: relative;
             z-index: 10;
         }
-
         .section-header {
             text-align: center;
             margin-bottom: 3rem;
         }
-
         .section-title {
             font-size: 2.5rem;
             font-weight: 800;
             color: var(--text-primary);
             margin-bottom: 1rem;
         }
-
         .section-subtitle {
             font-size: 1.125rem;
             color: var(--text-secondary);
-            max-width: 600px;
+            max-width: 800px;
             margin: 0 auto;
         }
-
-        /* News Grid */
-        .news-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        /* News List - Vertical Layout */
+        .news-list {
+            display: flex;
+            flex-direction: column;
             gap: 2rem;
             margin-top: 3rem;
         }
-
-        .news-card {
+        .news-article {
             background: var(--white);
             border-radius: 20px;
             overflow: hidden;
@@ -231,14 +204,15 @@
             transition: all 0.3s ease;
             position: relative;
             animation: fadeInUp 0.6s ease;
+            border-left: 5px solid transparent;
+            background-image: var(--secondary-gradient);
+            background-clip: padding-box;
         }
-
-        .news-card:hover {
-            transform: translateY(-8px);
+        .news-article:hover {
+            transform: translateY(-4px);
             box-shadow: var(--shadow-xl);
         }
-
-        .news-card::before {
+        .news-article::before {
             content: '';
             position: absolute;
             top: 0;
@@ -247,111 +221,106 @@
             height: 4px;
             background: var(--secondary-gradient);
         }
-
-        .news-header {
-            padding: 1.5rem;
+        .article-header {
+            padding: 2rem 2rem 1rem;
             border-bottom: 1px solid var(--border-color);
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
         }
-
-        .news-meta {
+        .article-meta {
             display: flex;
             align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
             gap: 1rem;
-            margin-bottom: 1rem;
         }
-
-        .news-date {
+        .article-date {
             display: flex;
             align-items: center;
             gap: 0.5rem;
             color: var(--text-secondary);
             font-size: 0.875rem;
+            font-weight: 500;
         }
-
-        .news-category {
+        .article-category {
             background: var(--success-gradient);
             color: white;
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
             font-size: 0.75rem;
             font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
-
-        .news-title {
-            font-size: 1.25rem;
+        .article-title {
+            font-size: 1.75rem;
             font-weight: 700;
             color: var(--text-primary);
-            line-height: 1.4;
+            line-height: 1.3;
             margin: 0;
         }
-
-        .news-content {
-            padding: 1.5rem;
+        .article-content {
+            padding: 2rem;
         }
-
-        .news-text {
+        .article-text {
             color: var(--text-secondary);
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            white-space: pre-line;
         }
-
-        .news-actions {
+        .article-actions {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
         }
-
-        .read-more {
-            background: var(--primary-gradient);
-            color: white;
-            padding: 0.5rem 1.5rem;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.875rem;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .read-more:hover {
-            transform: translateX(4px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .news-share {
+        .article-share {
             display: flex;
-            gap: 0.5rem;
+            gap: 0.75rem;
         }
-
         .share-btn {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
             border: none;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
-            font-size: 0.875rem;
+            font-size: 1rem;
         }
-
         .share-btn.telegram {
             background: #0088cc;
             color: white;
         }
-
         .share-btn.copy {
             background: var(--border-color);
             color: var(--text-secondary);
         }
-
+        .share-btn.whatsapp {
+            background: #25d366;
+            color: white;
+        }
         .share-btn:hover {
             transform: scale(1.1);
+            box-shadow: var(--shadow-md);
         }
-
+        .article-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        .tag {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
         /* Loading States */
         .loading-container {
             display: flex;
@@ -361,7 +330,6 @@
             padding: 4rem 2rem;
             text-align: center;
         }
-
         .loading-spinner {
             width: 48px;
             height: 48px;
@@ -371,17 +339,14 @@
             animation: spin 1s linear infinite;
             margin-bottom: 1rem;
         }
-
         .loading-text {
             color: var(--text-secondary);
             font-size: 1.125rem;
         }
-
         .empty-state {
             text-align: center;
             padding: 4rem 2rem;
         }
-
         .empty-icon {
             width: 80px;
             height: 80px;
@@ -394,7 +359,6 @@
             font-size: 2rem;
             color: var(--text-secondary);
         }
-
         .error-state {
             background: #fed7d7;
             border: 1px solid #feb2b2;
@@ -404,7 +368,50 @@
             text-align: center;
             margin: 2rem 0;
         }
-
+        /* Search and Filter */
+        .news-controls {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .search-box {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+        }
+        .search-input {
+            width: 100%;
+            padding: 1rem 1rem 1rem 3rem;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            font-size: 1rem;
+            background: var(--white);
+            transition: all 0.3s ease;
+        }
+        .search-input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+        .sort-select {
+            padding: 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            background: var(--white);
+            font-size: 1rem;
+            cursor: pointer;
+        }
         /* Footer */
         .footer {
             background: var(--dark-gradient);
@@ -412,14 +419,12 @@
             padding: 3rem 0 2rem;
             margin-top: 4rem;
         }
-
         .footer-content {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 2rem;
             text-align: center;
         }
-
         .footer-logo {
             display: flex;
             align-items: center;
@@ -427,19 +432,16 @@
             gap: 1rem;
             margin-bottom: 1.5rem;
         }
-
         .footer-text {
             opacity: 0.8;
             margin-bottom: 2rem;
         }
-
         .footer-social {
             display: flex;
             justify-content: center;
             gap: 1rem;
             margin-bottom: 2rem;
         }
-
         .social-link {
             width: 48px;
             height: 48px;
@@ -452,19 +454,16 @@
             text-decoration: none;
             transition: all 0.3s ease;
         }
-
         .social-link:hover {
             background: rgba(255, 255, 255, 0.2);
             transform: translateY(-2px);
         }
-
         .footer-bottom {
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             padding-top: 1.5rem;
             opacity: 0.6;
             font-size: 0.875rem;
         }
-
         /* Animations */
         @keyframes fadeInUp {
             from {
@@ -476,69 +475,66 @@
                 transform: translateY(0);
             }
         }
-
         @keyframes spin {
             to {
                 transform: rotate(360deg);
             }
         }
-
         /* Responsive Design */
         @media (max-width: 768px) {
             .nav-container {
                 padding: 0 1rem;
             }
-
             .nav-links {
                 gap: 1rem;
             }
-
             .hero h1 {
                 font-size: 2rem;
             }
-
             .hero-stats {
                 gap: 2rem;
             }
-
             .news-section {
                 padding: 0 1rem;
             }
-
-            .news-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
             .section-title {
                 font-size: 2rem;
             }
+            .article-header,
+            .article-content {
+                padding: 1.5rem;
+            }
+            .article-title {
+                font-size: 1.5rem;
+            }
+            .news-controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .search-box {
+                min-width: auto;
+            }
         }
-
         @media (max-width: 480px) {
             .hero {
                 padding: 2rem 0;
             }
-
             .hero h1 {
                 font-size: 1.75rem;
             }
-
             .hero-stats {
                 flex-direction: column;
                 gap: 1rem;
             }
-
-            .news-card {
-                margin: 0 0.5rem;
-            }
-
-            .news-header,
-            .news-content {
+            .article-header,
+            .article-content {
                 padding: 1rem;
             }
+            .article-meta {
+                flex-direction: column;
+                align-items: flex-start;
+            }
         }
-
         /* Scroll to top button */
         .scroll-top {
             position: fixed;
@@ -558,15 +554,30 @@
             z-index: 1000;
             box-shadow: var(--shadow-lg);
         }
-
         .scroll-top.visible {
             opacity: 1;
             visibility: visible;
         }
-
         .scroll-top:hover {
             transform: translateY(-4px);
             box-shadow: var(--shadow-xl);
+        }
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            background: var(--success-gradient);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-lg);
+            z-index: 1001;
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+        }
+        .notification.show {
+            transform: translateX(0);
         }
     </style>
 </head>
@@ -592,7 +603,7 @@
     <section class="hero">
         <div class="hero-content">
             <h1>So'nggi Yangiliklar</h1>
-            <p>Xiva IMI maktab-internatining eng muhim yangiliklari va tadbirlari haqida xabardor bo'ling</p>
+            <p>Xiva IMI maktab-internatining eng muhim yangiliklari va tadbirlari haqida to'liq ma'lumot</p>
             <div class="hero-stats">
                 <div class="stat-item">
                     <span class="stat-number" id="newsCount">0</span>
@@ -612,6 +623,19 @@
 
     <!-- News Section -->
     <section class="news-section">
+        <!-- Search and Filter Controls -->
+        <div class="news-controls">
+            <div class="search-box">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" class="search-input" id="searchInput" placeholder="Yangiliklar ichida qidirish...">
+            </div>
+            <select class="sort-select" id="sortSelect">
+                <option value="newest">Eng yangi</option>
+                <option value="oldest">Eng eski</option>
+                <option value="title">Sarlavha bo'yicha</option>
+            </select>
+        </div>
+
         <div id="news-container">
             <div class="loading-container">
                 <div class="loading-spinner"></div>
@@ -657,22 +681,29 @@
         // Firebase konfiguratsiyasi
         import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
         import { 
-            getFirestore, 
-            collection, 
-            onSnapshot, 
-            orderBy, 
+            getFirestore,
+            collection,
+            onSnapshot,
+            orderBy,
             query 
         } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
 
         // Firebase konfiguratsiya obyekti
         const firebaseConfig = {
-            apiKey: "AIzaSyASPn93j0gaTfRNuKZ3F6q47CGBeus2fzY",
-            authDomain: "khivaimi1.firebaseapp.com",
-            projectId: "khivaimi1",
-            storageBucket: "khivaimi1.firebasestorage.app",
-            messagingSenderId: "541131443062",
-            appId: "1:541131443062:web:b68f095be3bc4ac61a0857",
-            measurementId: "G-WFMQSESQXF"
+             apiKey: "AIzaSyASPn93j0gaTfRNuKZ3F6q47CGBeus2fzY",
+
+  authDomain: "khivaimi1.firebaseapp.com",
+
+  projectId: "khivaimi1",
+
+  storageBucket: "khivaimi1.firebasestorage.app",
+
+  messagingSenderId: "541131443062",
+
+  appId: "1:541131443062:web:9b50134f580e18da1a0857",
+
+  measurementId: "G-W16ER5KBPQ"
+
         };
 
         // Firebase ni ishga tushirish
@@ -681,6 +712,11 @@
 
         const newsContainer = document.getElementById("news-container");
         const newsCountElement = document.getElementById("newsCount");
+        const searchInput = document.getElementById("searchInput");
+        const sortSelect = document.getElementById("sortSelect");
+
+        let allNewsItems = [];
+        let filteredNewsItems = [];
 
         // Yangiliklar yuklanishi
         function loadNews() {
@@ -691,15 +727,17 @@
                 );
 
                 onSnapshot(newsQuery, (snapshot) => {
-                    let newsItems = [];
+                    allNewsItems = [];
                     snapshot.forEach((doc) => {
-                        newsItems.push({
+                        allNewsItems.push({
                             id: doc.id,
                             data: doc.data()
                         });
                     });
-                    displayNews(newsItems);
-                    updateNewsCount(newsItems.length);
+                    
+                    filteredNewsItems = [...allNewsItems];
+                    displayNews(filteredNewsItems);
+                    updateNewsCount(allNewsItems.length);
                 }, (error) => {
                     console.error("Yangiliklar yuklanishda xatolik:", error);
                     showError("Yangiliklar yuklanishda xatolik yuz berdi.");
@@ -710,30 +748,30 @@
             }
         }
 
-        // Yangiliklar ko'rsatish
+        // Yangiliklar ko'rsatish (to'liq matn bilan)
         function displayNews(newsItems) {
             if (newsItems.length === 0) {
                 showEmpty();
                 return;
             }
 
-            const newsGrid = document.createElement('div');
-            newsGrid.className = 'news-grid';
+            const newsList = document.createElement('div');
+            newsList.className = 'news-list';
 
             newsItems.forEach(({ id, data }, index) => {
-                const newsCard = createNewsCard(data, index);
-                newsGrid.appendChild(newsCard);
+                const newsArticle = createNewsArticle(data, index);
+                newsList.appendChild(newsArticle);
             });
 
             newsContainer.innerHTML = '';
-            newsContainer.appendChild(newsGrid);
+            newsContainer.appendChild(newsList);
         }
 
-        // Yangilik kartasi yaratish
-        function createNewsCard(data, index) {
-            const card = document.createElement('div');
-            card.className = 'news-card';
-            card.style.animationDelay = `${index * 0.1}s`;
+        // To'liq yangilik maqolasi yaratish
+        function createNewsArticle(data, index) {
+            const article = document.createElement('div');
+            article.className = 'news-article';
+            article.style.animationDelay = `${index * 0.1}s`;
 
             // Sana formatlash
             let dateString = "";
@@ -743,7 +781,9 @@
                     dateString = date.toLocaleDateString('uz-UZ', {
                         day: 'numeric',
                         month: 'long',
-                        year: 'numeric'
+                        year: 'numeric',
+                        hour: '2-digit',
+                        minute: '2-digit'
                     });
                 } catch (error) {
                     dateString = "Bugun";
@@ -752,33 +792,37 @@
                 dateString = "Bugun";
             }
 
-            // Matn qisqartirish
+            // To'liq matn
             const content = data.content || "";
-            const shortContent = content.length > 150 ? content.substring(0, 150) + "..." : content;
+            
+            // Teglar yaratish
+            const tags = generateTags(data.title, content);
 
-            card.innerHTML = `
-                <div class="news-header">
-                    <div class="news-meta">
-                        <div class="news-date">
+            article.innerHTML = `
+                <div class="article-header">
+                    <div class="article-meta">
+                        <div class="article-date">
                             <i class="fas fa-calendar-alt"></i>
                             <span>${dateString}</span>
                         </div>
-                        <div class="news-category">Yangilik</div>
+                        <div class="article-category">Yangilik</div>
                     </div>
-                    <h3 class="news-title">${data.title || "Sarlavha yo'q"}</h3>
+                    <h2 class="article-title">${data.title || "Sarlavha yo'q"}</h2>
                 </div>
-                <div class="news-content">
-                    <p class="news-text">${shortContent}</p>
-                    <div class="news-actions">
-                        <a href="#" class="read-more" onclick="showFullNews('${data.title}', '${content}', '${dateString}')">
-                            Batafsil
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-                        <div class="news-share">
-                            <button class="share-btn telegram" onclick="shareToTelegram('${data.title}')">
+                <div class="article-content">
+                    <div class="article-text">${content}</div>
+                    <div class="article-actions">
+                        <div class="article-tags">
+                            ${tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                        </div>
+                        <div class="article-share">
+                            <button class="share-btn telegram" onclick="shareToTelegram('${encodeURIComponent(data.title)}', '${encodeURIComponent(content)}')" title="Telegram'da ulashish">
                                 <i class="fab fa-telegram"></i>
                             </button>
-                            <button class="share-btn copy" onclick="copyToClipboard('${data.title}')">
+                            <button class="share-btn whatsapp" onclick="shareToWhatsApp('${encodeURIComponent(data.title)}', '${encodeURIComponent(content)}')" title="WhatsApp'da ulashish">
+                                <i class="fab fa-whatsapp"></i>
+                            </button>
+                            <button class="share-btn copy" onclick="copyToClipboard('${data.title}', '${content}')" title="Nusxalash">
                                 <i class="fas fa-copy"></i>
                             </button>
                         </div>
@@ -786,7 +830,60 @@
                 </div>
             `;
 
-            return card;
+            return article;
+        }
+
+        // Teglar yaratish
+        function generateTags(title, content) {
+            const tags = [];
+            const text = (title + ' ' + content).toLowerCase();
+            
+            if (text.includes('olimpiada') || text.includes('tanlov')) tags.push('Olimpiada');
+            if (text.includes('o\'quv') || text.includes('dars')) tags.push('Ta\'lim');
+            if (text.includes('sport') || text.includes('futbol')) tags.push('Sport');
+            if (text.includes('madaniy') || text.includes('konsert')) tags.push('Madaniyat');
+            if (text.includes('yangi') || text.includes('ochildi')) tags.push('Yangilik');
+            if (text.includes('taqdir') || text.includes('mukofot')) tags.push('Mukofot');
+            
+            return tags.length > 0 ? tags : ['Umumiy'];
+        }
+
+        // Qidiruv funksiyasi
+        function filterNews() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const sortType = sortSelect.value;
+
+            filteredNewsItems = allNewsItems.filter(item => {
+                const title = (item.data.title || '').toLowerCase();
+                const content = (item.data.content || '').toLowerCase();
+                return title.includes(searchTerm) || content.includes(searchTerm);
+            });
+
+            // Saralash
+            switch(sortType) {
+                case 'oldest':
+                    filteredNewsItems.sort((a, b) => {
+                        const dateA = a.data.createdAt ? a.data.createdAt.toDate() : new Date(0);
+                        const dateB = b.data.createdAt ? b.data.createdAt.toDate() : new Date(0);
+                        return dateA - dateB;
+                    });
+                    break;
+                case 'title':
+                    filteredNewsItems.sort((a, b) => {
+                        const titleA = (a.data.title || '').toLowerCase();
+                        const titleB = (b.data.title || '').toLowerCase();
+                        return titleA.localeCompare(titleB);
+                    });
+                    break;
+                default: // newest
+                    filteredNewsItems.sort((a, b) => {
+                        const dateA = a.data.createdAt ? a.data.createdAt.toDate() : new Date();
+                        const dateB = b.data.createdAt ? b.data.createdAt.toDate() : new Date();
+                        return dateB - dateA;
+                    });
+            }
+
+            displayNews(filteredNewsItems);
         }
 
         // Yangiliklar sonini yangilash
@@ -810,8 +907,8 @@
                     <div class="empty-icon">
                         <i class="fas fa-newspaper"></i>
                     </div>
-                    <h3>Hali yangiliklar yo'q</h3>
-                    <p>Tez orada yangi yangiliklar qo'shiladi</p>
+                    <h3>Yangiliklar topilmadi</h3>
+                    <p>Qidiruv so'zini o'zgartirib ko'ring yoki barcha yangiliklar uchun qidiruvni tozalang</p>
                 </div>
             `;
         }
@@ -823,6 +920,9 @@
                     <i class="fas fa-exclamation-triangle" style="font-size: 2rem; margin-bottom: 1rem;"></i>
                     <h3>Xatolik yuz berdi</h3>
                     <p>${message}</p>
+                    <button onclick="location.reload()" style="margin-top: 1rem; padding: 0.5rem 1rem; background: #667eea; color: white; border: none; border-radius: 8px; cursor: pointer;">
+                        Qayta yuklash
+                    </button>
                 </div>
             `;
         }
@@ -833,48 +933,177 @@
                 {
                     id: "demo1",
                     data: {
-                        title: "🎓 Yangi o'quv yili boshlanishi",
-                        content: "2024-2025 o'quv yili rasmiy ravishda boshlandi. Barcha o'quvchilar va o'qituvchilar yangi imkoniyatlar bilan tanishdilar.\n\nYangi o'quv yilida quyidagi yangiliklar mavjud:\n• Zamonaviy laboratoriyalar\n• Yangi darsliklar\n• Qo'shimcha to'garaklar\n• Raqamli ta'lim platformalari",
+                        title: "🎓 2024-2025 o'quv yili rasmiy ochilishi",
+                        content: `Hurmatli o'quvchilar, ota-onalar va o'qituvchilar!
+
+Bugun bizning maktab-internatimizda yangi 2024-2025 o'quv yili tantanali ravishda boshlandi. Ochilish marosimida maktab direktori, o'qituvchilar va o'quvchilar ishtirok etdi.
+
+Yangi o'quv yilida quyidagi yangiliklar mavjud:
+
+🔬 Zamonaviy fizika va kimyo laboratoriyalari
+📚 Yangi darsliklar va o'quv materiallari  
+💻 Kompyuter sinflari yangilandi
+🎨 San'at va musiqa xonalari jihozlandi
+🏃‍♂️ Sport majmuasi kengaytirildi
+
+Barcha o'quvchilarimizga yangi o'quv yilida muvaffaqiyatlar tilaymiz!
+
+Maktab ma'muriyati`,
                         createdAt: new Date()
                     }
                 },
                 {
                     id: "demo2", 
                     data: {
-                        title: "🏆 Olimpiada g'oliblari taqdirlandi",
-                        content: "Viloyat olimpiadasida yuqori natijalar ko'rsatgan o'quvchilarimiz maxsus mukofotlar bilan taqdirlandi.\n\nG'oliblar ro'yxati:\n🥇 Matematika - Ahmadjon Karimov\n🥈 Fizika - Malika Tosheva\n🥉 Kimyo - Sardor Rahimov\n\nBarcha g'oliblarga tabriklarimiz!",
+                        title: "🏆 Viloyat olimpiadasida yuqori natijalar",
+                        content: `Faxrlanamiz! Bizning o'quvchilarimiz viloyat olimpiadasida ajoyib natijalar ko'rsatdi.
+
+G'oliblar ro'yxati:
+
+🥇 Matematika olimpiadasi
+   - 1-o'rin: Ahmadjon Karimov (10-sinf)
+   - 2-o'rin: Malika Tosheva (9-sinf)
+
+🥇 Fizika olimpiadasi  
+   - 1-o'rin: Sardor Rahimov (11-sinf)
+   - 3-o'rin: Dilnoza Yusupova (10-sinf)
+
+🥇 Kimyo olimpiadasi
+   - 2-o'rin: Jasur Abdullayev (11-sinf)
+
+🥇 Ingliz tili olimpiadasi
+   - 1-o'rin: Nigora Karimova (9-sinf)
+   - 2-o'rin: Bobur Toshev (10-sinf)
+
+Barcha g'oliblarga chin dildan tabriklarimiz! Sizlar maktabimizning faxri va g'ururisiz.
+
+Keyingi bosqich - respublika olimpiadasi. Omad tilaymiz!`,
                         createdAt: new Date(Date.now() - 86400000)
                     }
                 },
                 {
                     id: "demo3",
                     data: {
-                        title: "💻 Yangi kompyuter sinfi ochildi",
-                        content: "Maktabimizda zamonaviy kompyuter sinfi ochildi. Sinfda 30 ta yangi kompyuter va interaktiv doska o'rnatildi.\n\nYangi imkoniyatlar:\n• Dasturlash darslari\n• Robotika to'garagi\n• 3D modellashtirish\n• Web dizayn kurslari",
+                        title: "💻 Yangi IT-laboratoriya ochildi",
+                        content: `Bugun maktabimizda zamonaviy IT-laboratoriya rasmiy ochildi!
+
+Laboratoriya imkoniyatlari:
+
+🖥️ 30 ta yangi kompyuter (Intel Core i5, 8GB RAM)
+📺 75" Smart TV interaktiv doska
+🌐 Yuqori tezlikdagi internet (100 Mbps)
+🎧 Professional audio qurilmalari
+📹 Video montaj uchun dasturlar
+🤖 Robotika to'plami
+
+Yangi kurslar:
+• Web dasturlash (HTML, CSS, JavaScript)
+• Python dasturlash tili
+• Grafik dizayn (Photoshop, Illustrator)  
+• Video montaj va animatsiya
+• Robotika va Arduino
+• 3D modellashtirish
+
+Darslar har kuni 14:00-17:00 oralig'ida o'tkaziladi.
+
+Ro'yxatdan o'tish uchun IT o'qituvchisi Aziz Rahimov bilan bog'laning.
+
+#ITta'lim #Dasturlash #Robotika`,
                         createdAt: new Date(Date.now() - 172800000)
+                    }
+                },
+                {
+                    id: "demo4",
+                    data: {
+                        title: "\"Yoshlik bahari\" madaniy tadbirlar haftaligi",
+                        content: `Hurmatli jamoatchilik!,
+
+Kelgusi hafta maktabimizda "Yoshlik bahari" madaniy tadbirlar haftaligi o'tkaziladi.
+
+Dastur:
+
+📅 Dushanba (15-yanvar)
+🎵 "Yosh ijodkorlar kechasi" - konsert dasturi
+⏰ 15:00, Aktlar zali
+
+📅 Seshanba (16-yanvar)  
+🎨 Ko'rgazmali san'at ko'rgazmasi ochilishi
+⏰ 14:00, San'at xonasi
+
+📅 Chorshanba (17-yanvar)
+📚 "Kitob - bilim manbai" adabiy kecha
+⏰ 15:30, Kutubxona
+
+📅 Payshanba (18-yanvar)
+🏃‍♂️ Sport musobaqalari
+⏰ 14:00, Sport majmuasi
+
+📅 Juma (19-yanvar)
+🎉 Yakuniy kecha va g'oliblarni taqdirlash
+⏰ 16:00, Aktlar zali
+
+Barcha o'quvchilar va ota-onalar taklif etiladi!
+
+Batafsil ma'lumot uchun: 
+📞 +998 62 375-XX-XX
+📧 info@khivaimi.uz`,
+                        createdAt: new Date(Date.now() - 259200000)
                     }
                 }
             ];
-
-            displayNews(demoNews);
+            
+            allNewsItems = demoNews;
+            filteredNewsItems = [...allNewsItems];
+            displayNews(filteredNewsItems);
             updateNewsCount(demoNews.length);
         }
 
         // Global funksiyalar
-        window.showFullNews = function(title, content, date) {
-            alert(`${title}\n\n${content}\n\nSana: ${date}`);
-        };
-
-        window.shareToTelegram = function(title) {
-            const url = `https://t.me/share/url?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(title)}`;
+        window.shareToTelegram = function(title, content) {
+            const text = `${decodeURIComponent(title)}\n\n${decodeURIComponent(content)}\n\n${window.location.href}`;
+            const url = `https://t.me/share/url?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(text)}`;
             window.open(url, '_blank');
         };
 
-        window.copyToClipboard = function(title) {
-            navigator.clipboard.writeText(`${title} - ${window.location.href}`).then(() => {
-                alert('Nusxalandi!');
+        window.shareToWhatsApp = function(title, content) {
+            const text = `${decodeURIComponent(title)}\n\n${decodeURIComponent(content)}\n\n${window.location.href}`;
+            const url = `https://wa.me/?text=${encodeURIComponent(text)}`;
+            window.open(url, '_blank');
+        };
+
+        window.copyToClipboard = function(title, content) {
+            const text = `${title}\n\n${content}\n\n${window.location.href}`;
+            navigator.clipboard.writeText(text).then(() => {
+                showNotification('Maqola nusxalandi!');
+            }).catch(() => {
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = text;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                showNotification('Maqola nusxalandi!');
             });
         };
+
+        // Bildirishnoma ko'rsatish
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            notification.innerHTML = `<i class="fas fa-check"></i> ${message}`;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => notification.classList.add('show'), 100);
+            setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => document.body.removeChild(notification), 300);
+            }, 3000);
+        }
+
+        // Event listeners
+        searchInput.addEventListener('input', filterNews);
+        sortSelect.addEventListener('change', filterNews);
 
         // Sahifa yuklanganda
         document.addEventListener('DOMContentLoaded', function() {
@@ -938,10 +1167,10 @@
                 });
             }, observerOptions);
 
-            // Observe news cards
+            // Observe news articles
             setTimeout(() => {
-                document.querySelectorAll('.news-card').forEach(card => {
-                    observer.observe(card);
+                document.querySelectorAll('.news-article').forEach(article => {
+                    observer.observe(article);
                 });
             }, 1000);
         });
